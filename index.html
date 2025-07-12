@@ -1,9 +1,1040 @@
 <!DOCTYPE html>
-<html>
-<body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="AImplifier">
+    <meta name="author" content="AImplifier">
 
-<h1>My First Heading</h1>
-<p>My first paragraph.</p>
+    <meta property="og:title" content="AImplifier">
+    <meta property="og:description" content="AImplifier">
+    <meta property="og:type" content="website">
 
+    <title>AImplifier</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --primary-dark: #1565c0;
+            --secondary: #00bcd4;
+            --dark: #212121;
+            --light: #f5f5f5;
+            --success: #4caf50;
+            --warning: #ff9800;
+            --danger: #f44336;
+            --gray: #757575;
+            --light-gray: #eceff1;
+            --white: #ffffff;  /* ✅ Add this */
+            --size:   30px;
+            --gap:    0px;
+            --blue:   #4285F4;
+            --red:    #EA4335;
+            --yellow: #FBBC05;
+            --green:  #34A853;
+            --empty:  white;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            margin: 0;
+/*              display: flex;*/
+              height: 100vh;
+              justify-content: center;
+              align-items: center;
+              background: var(--empty);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-heading:after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 25%;
+        }
+        
+        .section-subheading {
+            color: var(--gray);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: rgba(33, 33, 33, 0.95);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar.navbar-shrink {
+            padding: 0.5rem 0;
+        }
+        
+        .navbar-brand {
+            color: var(--light) !important;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--light) !important;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link:focus {
+            color: var(--secondary) !important;
+        }
+        
+        .navbar-toggler {
+            border: none;
+            padding: 0.25rem 0.75rem;
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        /* Header/Hero Section */
+        header {
+            padding-top: 80px;
+            position: relative;
+            height: 110vh;
+/*            display: flex;*/
+            align-items: center;
+            color: var(--light);
+            overflow: hidden;
+        }
+
+        /* Background GIF layer */
+        /*header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('img/DPG2.gif') center center / cover no-repeat;
+            z-index: 0;
+        }*/
+
+        /* Dark overlay gradient */
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--white);
+            z-index: 1;
+        }
+
+        /* Foreground content */
+        header .container,
+        header .intro-text {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .intro-text {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .intro-lead-in {
+            font-size: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 2rem;
+        }
+        
+        .intro-lead-in b {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+        
+        .btn-xl {
+            background-color: var(--primary);
+            border: none;
+            color: var(--light);
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn-xl:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* About Section */
+        #about {
+            padding: 6rem 0;
+            background-color: var(--light-gray); /* Ensure this is applied */
+        }
+
+        #projects {
+            padding: 6rem 0;
+/*            background-color: var(--light-gray); /* Ensure this is applied */*/
+        }
+       
+
+        #sponsor {
+            padding: 6rem 0;
+        }
+        
+        .service-card {
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+        
+        .service-heading {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-dark);
+        }
+
+        #student-committee {
+            padding: 6rem 0;
+            background-color: var(--light-gray); /* Ensure this is applied */
+        }
+
+        #committee {
+            padding: 6rem 0;
+            background-color: var(--white); /* Ensure this is applied */
+        }
+
+        #partners {
+            padding: 6rem 0;
+/*            background-color: var(--light-gray); /* Ensure this is applied */*/
+        }
+        
+        /* Timeline Section */
+        #timeline {
+            padding: 6rem 0;
+            background-color: var(--light-gray);
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 0;
+            list-style: none;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            margin-left: -2px;
+            background-color: var(--light);
+        }
+        
+        .timeline > li {
+            position: relative;
+            margin-bottom: 3rem;
+            min-height: 200px;
+        }
+        
+        .timeline > li:before,
+        .timeline > li:after {
+            content: ' ';
+            display: table;
+        }
+        
+        .timeline > li:after {
+            clear: both;
+        }
+        
+        .timeline > li .timeline-panel {
+            float: left;
+            position: relative;
+            width: 46%;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline > li .timeline-panel:hover {
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline > li.timeline-inverted > .timeline-panel {
+            float: right;
+        }
+        
+        .timeline > li .timeline-image {
+            position: absolute;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            margin-left: -50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .timeline > li.timeline-inverted .timeline-image {
+            background-color: var(--secondary);
+        }
+        
+        .timeline > li .timeline-image h4 {
+            margin: 0;
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.3;
+        }
+        
+        .timeline-heading h4 {
+            margin-top: 0;
+            color: var(--dark);
+        }
+        
+        .timeline-heading h4.subheading {
+            text-transform: none;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .timeline-body > p,
+        .timeline-body > ul {
+            margin-bottom: 0;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background-color: var(--dark);
+            color: var(--light);
+            text-align: center;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            line-height: 40px;
+            text-transform: none;
+        }
+        
+        .social-buttons {
+            margin-bottom: 0;
+        }
+        
+        .social-buttons li a {
+            display: block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            line-height: 40px;
+            color: white;
+            background-color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .social-buttons li a:hover {
+            background-color: var(--primary);
+            transform: scale(1.1);
+        }
+
+        /* Committee Section Styling */
+        .committee-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+            text-align: center;
+        }
+
+        .committee-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .committee-img-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .committee-img-placeholder {
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 3rem;
+        }
+
+        .committee-info h4 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .committee-title {
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sponsor Section Styling */
+        .sponsor-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid var(--light-gray);
+        }
+
+        .sponsor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .sponsor-img-container {
+            margin-bottom: 1rem;
+        }
+
+        .sponsor-img-placeholder {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 50%;
+            margin: 0 auto;
+            font-size: 2.5rem;
+        }
+
+        .sponsor-card.platinum .sponsor-img-placeholder {
+            background: linear-gradient(135deg, #e5e4e2, #afb1b3);
+        }
+
+        .sponsor-card.gold .sponsor-img-placeholder {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+
+        .sponsor-card.academic .sponsor-img-placeholder {
+            background: linear-gradient(135deg, var(--primary), #002855);
+        }
+
+        .sponsor-card.media .sponsor-img-placeholder {
+            background: linear-gradient(135deg, #6a0dad, #9370DB);
+        }
+
+        .sponsor-info h4, .sponsor-info h5 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .sponsor-card.platinum {
+            border-top: 5px solid #afb1b3;
+        }
+
+        .sponsor-card.gold {
+            border-top: 5px solid #FFD700;
+        }
+
+        .sponsor-card.academic {
+            border-top: 5px solid var(--primary);
+        }
+
+        .sponsor-card.media {
+            border-top: 5px solid #6a0dad;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .center-div {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .intro-logo {
+            max-width: 200px;      /* keeps it neat on large screens */
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem; /* space before the title */
+        }
+
+        .court {
+            max-width: 400px;      /* keeps it neat on large screens */
+            width: 100%;
+            height: auto;
+            margin-bottom: 1.5rem; /* space before the title */
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991px) {
+            .timeline > li .timeline-panel {
+                width: 40%;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .timeline:before {
+                left: 40px;
+            }
+            
+            .timeline > li .timeline-panel {
+                width: calc(100% - 90px);
+                float: right;
+            }
+            
+            .timeline > li .timeline-image {
+                left: 40px;
+                margin-left: 0;
+                width: 80px;
+                height: 80px;
+            }
+            
+            .timeline > li.timeline-inverted > .timeline-panel {
+                float: right;
+            }
+            
+            .section-heading {
+                font-size: 2rem;
+            }
+            
+            .intro-lead-in {
+                font-size: 1.2rem;
+            }
+        }
+        .grid4 {
+      display: grid;
+      grid-template-columns: repeat(12, var(--size));
+      grid-template-rows:    repeat(12, var(--size));
+      gap: var(--gap);
+    }
+    .container4 {
+      display: flex;
+      justify-content: center; /* centers horizontally */
+/*      align-items: center;     /* centers vertically */*/
+      height: 100vh;           /* or any height you need */
+    }
+
+    .cell {
+      width:  var(--size);
+      height: var(--size);
+      box-sizing: border-box;
+      background: var(--empty);
+      transition: background-color 0.3s ease;
+    }
+
+    .blue, .red, .yellow, .green, .empty {
+      /* class identifiers only */
+    }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#page-top">AImplifier</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#timeline">Timeline</a>
+                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#student-committee">Members</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="#sponsor">Sponsors</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+
+                <!-- <div class="intro-lead-in">
+                    
+                    <img src="img/DPickleball - Transparent White.png"
+                    alt="dPickleball logo"
+                    class="intro-logo">
+                    <br>
+                    <b style="font-size: 3rem">Digital Pickleball Tournament</b>
+                    <br>Where Champions Play. 
+                    <br>Where Tech Dominates.
+                    <br>
+                    <br>
+                    🔥Rise to be the National Champion in AI, HCI, and BCI🔥
+                    <br>
+                    
+                </div>
+                <br>
+                <br> -->
+
+                
+    <!-- <div class="label">AImplifier</div> -->
+                <div class="container4">
+                <div class="grid4"></div>
+                </div>
+                <b style="font-size: 5rem; color: black;">AImplifier</b> <br>
+                <b style="font-size: 3rem; color: gray;">Amplifying AI and Its Impact</b>
+                
+
+                
+ 
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">About</h2>
+                    <br>
+                    
+                    <h3 class="section-subheading text-muted">AImplifier is a Research, Education, & Development (RED) Group committed to advancing cutting-edge AI, with a focus on impactful projects and events that benefit humanity, education, and science. We strive to amplify intelligence and its positive impact on the world.</h3>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4 class="service-heading">Research</h4>
+                        <p class="text-muted">We bring together insights from artificial intelligence and brain-computer interface to deepen our understanding of intelligence, cognition, and their associations with psychiatric disorders. We aspire to uncover valuable insights that could contribute to personalized treatment of neuro-diseases (e.g., epilepsy), and advance the development of more neuro-inspired artificial intelligence systems (e.g., multi-modal AI).</p>
+                        
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <h4 class="service-heading">Education</h4>
+                        <p class="text-muted">We conduct AI talks and organize AI competitions that empower university students to embrace problem-solving, strive for excellence, and ignite their passion for programming, AI, data science, and biomedical innovation. Through technology-driven challenges, we connect bright minds and nurture the next generation of tech talent, shaping the future of innovation.</p>
+                        
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4">
+                    <div class="service-card text-center">
+                        <div class="service-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h4 class="service-heading">Development</h4>
+                        <p class="text-muted">We develop efficient time-series models and softwares for solar energy prediction, enhances seizure prediction and epileptogenic zone localization to support surgical planning, and refines diagnostic methodologies for sleep disorders by decoding brain signals. Furthermore, we develop AI models to formulate climate policies that optimize environmental, economic, and social trade-offs. </p>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Advertisement Image -->
+            <!-- <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="advertisement-image">
+                        <img src="img/DPT.png" class="img-fluid rounded mx-auto d-block" style="max-width: 600px;" alt="Digital Pickleball Tournament">
+                    </div>
+                    <div class="advertisement-overlay">
+                        <div class="text-center">
+                            <div class="service-heading text-center">
+                                <h3>Discover the Future of Digital Sports</h3>
+                            </div>
+                            <div class="text-muted text-center">
+                                <p>Compete in AI, HCI, and BCI-driven pickleball matches for glory and prizes. Join dPickleball today!</p>
+                            </div>
+                            <a href="#about" class="btn btn-primary btn-lg">What's this?</a>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+   
+
+    <!-- Placeholder sections for Rules, Committees, and Sponsors -->
+    <section id="projects" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Projects</h2>
+                    <h3 class="section-subheading text-muted">GENII: EEG & Source Imaging on Cloud with AI</h3>
+                    <img src="img/EEG.png"
+                    alt="court"
+                    class="court">
+                    <img src="img/GENII.png"
+                    alt="court"
+                    class="court">
+                    <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
+                        <a href="https://github.com/genii-open" target="_blank" 
+                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
+                            More Details
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <!-- <h2 class="section-heading">Projects</h2> -->
+                    <h3 class="section-subheading text-muted">National AI Competition (dPickleBall)</h3>
+                    <img src="img/Court.png"
+                    alt="court"
+                    class="court">
+                    <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
+                        <a href="https://dpickleball.github.io/" target="_blank" 
+                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
+                            More Details
+                        </a>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Student Committee Section -->
+    <section id="student-committee" class="">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Team</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 student-committee-text text-center">
+                    
+                        <h4>Research Leads</h4>
+                        <p>TBA</p>
+                        <h4>Project Leaders</h4>
+                        <p>TBA</p>
+                        <h4>Members</h4>
+                        <p>TBA</p>
+                        
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="partners" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Collaborators</h2>
+                    <!-- <h3 class="section-subheading text-muted">Collaborate & Support with Enthusiasm & Heart</h3> -->
+                </div>
+            </div>
+            <!-- Academic Partners -->
+            <div class="row mb-5">
+                <!-- <div class="col-lg-12">
+                    <h3 class="text-center mb-4">Partners</h3>
+                </div> -->
+                
+
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Xiamen University Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>University Malaya Medical Center</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Harbin Institute of Technology</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Hong Kong University of Science of Technology</h5>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Xiamen University Malaysia</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>Universiti Malaya</h5>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <div class="sponsor-card academic">
+                        <div class="sponsor-img-container">
+                            <div class="sponsor-img-placeholder">
+                                <i class="fas fa-university"></i>
+                            </div>
+                        </div>
+                        <div class="sponsor-info">
+                            <h5>INTI International University</h5>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="copyright">Copyright &copy; AImplifier</span>
+                </div>
+                <!-- <div class="col-md-6">
+                    <ul class="list-inline social-buttons">
+                        <li class="list-inline-item"><a href="https://www.instagram.com/xmum_ai_club?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Navbar scroll behavior
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 100) {
+                $('.navbar').addClass('navbar-shrink');
+            } else {
+                $('.navbar').removeClass('navbar-shrink');
+            }
+        });
+        
+        // Smooth scrolling for page anchors
+        $(document).on('click', 'a.page-scroll', function(event) {
+            event.preventDefault();
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top - 70
+            }, 800);
+        });
+        
+        // Close responsive menu when a scroll trigger link is clicked
+        $('.nav-link').click(function() {
+            $('.navbar-collapse').collapse('hide');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const colors = [];
+
+        // First 3 rows
+        for (let i = 0; i < 3; i++) {
+          colors.push([
+            ...Array(6).fill('red'),
+            ...Array(2).fill('green'),
+            ...Array(2).fill('empty'),
+            ...Array(2).fill('green')
+          ]);
+        }
+
+        // Next 3 rows
+        for (let i = 0; i < 3; i++) {
+          colors.push([
+            ...Array(3).fill('red'),
+            ...Array(3).fill('empty'),
+            ...Array(2).fill('green'),
+            ...Array(2).fill('empty'),
+            ...Array(2).fill('green')
+          ]);
+        }
+
+        // Next 3 rows
+        for (let i = 0; i < 3; i++) {
+          colors.push([
+            ...Array(6).fill('blue'),
+            ...Array(2).fill('yellow'),
+            ...Array(2).fill('empty'),
+            ...Array(2).fill('yellow')
+          ]);
+        }
+
+        // Last 3 rows
+        for (let i = 0; i < 3; i++) {
+          colors.push([
+            ...Array(3).fill('blue'),
+            ...Array(3).fill('empty'),
+            ...Array(2).fill('yellow'),
+            ...Array(2).fill('empty'),
+            ...Array(2).fill('yellow')
+          ]);
+        }
+
+        const container = document.querySelector('.grid4');
+
+        // Generate cells and calculate delays column-wise
+        for (let row = 0; row < 12; row++) {
+          for (let col = 0; col < 12; col++) {
+            const color = colors[row][col];
+            const cell = document.createElement('div');
+            cell.classList.add('cell', color);
+            container.appendChild(cell);
+
+            const cssVar = `--${color}`;
+            const delay = col * 12 + row; // column-wise order
+
+            setTimeout(() => {
+              cell.style.backgroundColor = `var(${cssVar})`;
+            }, delay * 5); // speed factor (adjust as needed)
+          }
+        }
+      });
+    </script>
 </body>
 </html>
