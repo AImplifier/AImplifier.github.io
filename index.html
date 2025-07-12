@@ -129,23 +129,10 @@
             padding-top: 80px;
             position: relative;
             height: 110vh;
-/*            display: flex;*/
             align-items: center;
             color: var(--light);
             overflow: hidden;
         }
-
-        /* Background GIF layer */
-        /*header::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('img/DPG2.gif') center center / cover no-repeat;
-            z-index: 0;
-        }*/
 
         /* Dark overlay gradient */
         header::after {
@@ -253,7 +240,7 @@
             color: var(--primary-dark);
         }
 
-        #student-committee {
+        #team {
             padding: 6rem 0;
             background-color: var(--light-gray); /* Ensure this is applied */
         }
@@ -580,29 +567,29 @@
             }
         }
         .grid4 {
-      display: grid;
-      grid-template-columns: repeat(12, var(--size));
-      grid-template-rows:    repeat(12, var(--size));
-      gap: var(--gap);
-    }
-    .container4 {
-      display: flex;
-      justify-content: center; /* centers horizontally */
-/*      align-items: center;     /* centers vertically */*/
-      height: 100vh;           /* or any height you need */
-    }
+          display: grid;
+          grid-template-columns: repeat(12, var(--size));
+          grid-template-rows:    repeat(12, var(--size));
+          gap: var(--gap);
+        }
+        .container4 {
+          display: flex;
+          justify-content: center; /* centers horizontally */
+    /*      align-items: center;     /* centers vertically */*/
+          height: 100vh;           /* or any height you need */
+        }
 
-    .cell {
-      width:  var(--size);
-      height: var(--size);
-      box-sizing: border-box;
-      background: var(--empty);
-      transition: background-color 0.3s ease;
-    }
+        .cell {
+          width:  var(--size);
+          height: var(--size);
+          box-sizing: border-box;
+          background: var(--empty);
+          transition: background-color 0.3s ease;
+        }
 
-    .blue, .red, .yellow, .green, .empty {
-      /* class identifiers only */
-    }
+        .blue, .red, .yellow, .green, .empty {
+          /* class identifiers only */
+        }
     </style>
 </head>
 
@@ -619,18 +606,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#about">About</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#timeline">Timeline</a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#student-committee">Members</a>
+                        <a class="nav-link" href="#team">Team</a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="#sponsor">Sponsors</a>
-                    </li> -->
+                    
                 </ul>
             </div>
         </div>
@@ -641,26 +623,7 @@
         <div class="container">
             <div class="intro-text">
 
-                <!-- <div class="intro-lead-in">
-                    
-                    <img src="img/DPickleball - Transparent White.png"
-                    alt="dPickleball logo"
-                    class="intro-logo">
-                    <br>
-                    <b style="font-size: 3rem">Digital Pickleball Tournament</b>
-                    <br>Where Champions Play. 
-                    <br>Where Tech Dominates.
-                    <br>
-                    <br>
-                    🔥Rise to be the National Champion in AI, HCI, and BCI🔥
-                    <br>
-                    
-                </div>
-                <br>
-                <br> -->
-
                 
-    <!-- <div class="label">AImplifier</div> -->
                 <div class="container4">
                 <div class="grid4"></div>
                 </div>
@@ -682,7 +645,7 @@
                     <h2 class="section-heading">About</h2>
                     <br>
                     
-                    <h3 class="section-subheading text-muted">AImplifier is a Research, Education, & Development (RED) Group committed to advancing cutting-edge AI, with a focus on impactful projects and events that benefit humanity, education, and science. We strive to amplify intelligence and its positive impact on the world.</h3>
+                    <h3 class="section-subheading text-muted">AImplifier is a Research, Education, and Development (RED) Group committed to pushing the frontiers of AI to drive positive change across humanity, education, and science. We strive to amplify intelligence and its ability to shape a better world.</h3>
                 </div>
             </div>
             
@@ -704,7 +667,7 @@
                             <i class="fas fa-user"></i>
                         </div>
                         <h4 class="service-heading">Education</h4>
-                        <p class="text-muted">We conduct AI talks and organize AI competitions that empower university students to embrace problem-solving, strive for excellence, and ignite their passion for programming, AI, data science, and biomedical innovation. Through technology-driven challenges, we connect bright minds and nurture the next generation of tech talent, shaping the future of innovation.</p>
+                        <p class="text-muted">We organize AI talks and AI competitions that empower university students to embrace problem-solving, strive for excellence, and ignite their passion for programming, AI, data science, and biomedical innovation. Through technology-driven AI talks and competitions, we connect bright minds and nurture the next generation of tech talent, shaping the future of innovation.</p>
                         
                     </div>
                 </div>
@@ -721,25 +684,7 @@
                 </div>
             </div>
 
-            <!-- Enhanced Advertisement Image -->
-            <!-- <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="advertisement-image">
-                        <img src="img/DPT.png" class="img-fluid rounded mx-auto d-block" style="max-width: 600px;" alt="Digital Pickleball Tournament">
-                    </div>
-                    <div class="advertisement-overlay">
-                        <div class="text-center">
-                            <div class="service-heading text-center">
-                                <h3>Discover the Future of Digital Sports</h3>
-                            </div>
-                            <div class="text-muted text-center">
-                                <p>Compete in AI, HCI, and BCI-driven pickleball matches for glory and prizes. Join dPickleball today!</p>
-                            </div>
-                            <a href="#about" class="btn btn-primary btn-lg">What's this?</a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            
         </div>
     </section>
 
@@ -792,7 +737,7 @@
 
 
     <!-- Student Committee Section -->
-    <section id="student-committee" class="">
+    <section id="team" class="">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -884,44 +829,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>Xiamen University Malaysia</h5>
-                        </div>
-                    </div>
-                </div>
                 
-                <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>Universiti Malaya</h5>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>INTI International University</h5>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </section>
