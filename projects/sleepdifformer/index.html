@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SleepDIFFormer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 40px;
+    }
+    h1 {
+      font-size: 36px;
+    }
+    .authors {
+      font-size: 18px;
+      color: #555;
+    }
+    .buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 90%;
+    }
+    .section {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    h2 {
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SleepDIFFormer: Sleep Stage Classification via Multivariate Differential Transformer</h1>
+
+  <div class="authors">
+    <p>Benjamin Wei Hao Chin, Yuin Torng Yew, Haocheng Wu, Lanxin Liang, Chow Khuen Chan*, Norita Mohd Zain, Siti Balqis Samdin, Sim Kuan Goh*</p>
+  </div>
+  <span class="line">Xiamen University Malaysia.</span><br>
+  <span class="line">Universiti Malaya.</span><br>
+  <span class="line">Universiti Teknologi Malaysia.</span>
+
+  <div class="buttons">
+    <a href="pdf-paper-link" target="_blank">📄 Paper</a>
+    <a href="https://arxiv.org/abs/2508.15215" target="_blank">🔗 arXiv</a>
+    <a href="https://github.com/Ben1001409/SleepDIFFormer.git" target="_blank">💻 Code</a>
+  </div>
+
+  <img src="figures/general.png" alt="Project Figure"style="max-width:60%; margin-top:20px;>
+
+  <div class="section">
+  
+  <h2>Abstract</h2>
+  <p>
+  Classification of sleep stages is essential for assessing sleep quality and diagnosing sleep disorders such as insomnia. However, manual inspection of EEG characteristics for each stage is time-consuming and prone to human error. Although machine learning and deep learning methods have been actively developed, they continue to face challenges from the non-stationarity and variability of electroencephalography (EEG) and electrooculography (EOG) signals, often leading to poor generalization on unseen datasets. This research proposed a Sleep Stage Classification method by developing Multivariate Differential Transformer (SleepDIFFormer) for joint EEG and EOG representation learning. Specifically, SleepDIFFormer was developed to process EEG and EOG signals using our Multivariate Differential Transformer Architecture (MDTA) for time series, trained with cross-domain alignment. Our method mitigated spatial and temporal attention noise while learning a domain-invariant joint EEG–EOG representation through feature distribution alignment, thereby enabling generalization to unseen target datasets. Empirically, we evaluated our method on five different sleep staging datasets and compared it with existing approaches, achieving state-of-the-art performance. We also conducted a thorough ablation analyses of SleepDIFFormer and interpreted the differential attention weights, highlighting their relevance to characteristic sleep EEG patterns. These findings have implications for advancing automated sleep stage classification and its application to sleep quality assessment.</p>
+  </body>     
+  
+  <!-- Experimental Section -->
+  <h2>Experimental evidences</h2>
+  <p>
+    In this section, we present the main results of the proposed SleepDIFFormer model on multiple datasets.  
+    Our method demonstrates strong generalization and alignment capabilities, achieving state-of-the-art results in most evaluation settings.
+  </p>
+  
+  <p><img src="figures/result.png" alt="Table 1" style="max-width:70%; margin-top:20px;"></p>
+  <p>Cross-domain sleep-stage classification performance comparison. TD = target domain. Each column shows results when TD is the test domain and remaining are used for training. Best values are bolded.</p>
+  <p>
+  </p>
+  <p><img src=" figures/weight allocation visualization.png" alt="Table 2" style="max-width:67%; margin-top:20px;"></p>
+  <p>Attention weight allocation visualization on EEG and EOG across 4 layers with wake and different sleep stages.</p>
+  
+  <!-- BibTeX Section -->
+  <h2>BibTeX</h2>
+  <pre style="background:#f5f5f5; padding:15px; text-align:left; overflow-x:auto;">
+  @article{2025sleepdifformer,
+    author  = {Benjamin Wei Hao Chin, Yuin Torng Yew, Haocheng Wu, Lanxin Liang, Chow Khuen Chan, Norita Mohd Zain, Siti Balqis Samdin, Sim Kuan Goh},
+    title   = {SleepDIFFormer: Sleep Stage Classification via Multivariate Differential Transformer},
+    journal = {arXiv preprint arXiv:2508.15215},
+    year    = {2025}
+  }
+  </pre>
+
+</html>
