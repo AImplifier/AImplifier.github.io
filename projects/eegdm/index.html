@@ -589,6 +589,16 @@ In this section, we present the main results of the proposed EEGDM framework in 
 </div>
 </section>
 
+<section>
+<div class="columns is-centered">
+<div class="column is-two-fifths">
+<figure class="image is-16by16">
+<img src="./ResultChb.png" alt="Sample Image">
+</figure>
+</div>
+</div>
+</section>
+
 <!-- <section class="section" id="BibTeX">
 <div class="container is-max-desktop content">
 <h2 class="title">BibTeX</h2>
@@ -636,72 +646,72 @@ you do not want on your website.
 <script>
 // Map of Gramian values for combinations of video, audio, and text
 
-const gramianValues = {
-video1_audio1_text1: '0.230 Well Aligned! &#9989;',
-video1_audio1_text2: 0.414,
-video1_audio1_text3: 0.972,
-video1_audio1_text4: 0.947,
-video1_audio2_text1: 0.250,
-video1_audio2_text2: 0.314,
-video1_audio2_text3: 1.000,
-video1_audio2_text4: 0.991,
-video1_audio3_text1: 0.329,
-video1_audio3_text2: 0.515,
-video1_audio3_text3: 0.687,
-video1_audio3_text4: 0.583,
-video1_audio4_text1: 0.309,
-video1_audio4_text2: 0.473,
-video1_audio4_text3: 0.698,
-video1_audio4_text4: 0.573,
-video2_audio1_text1: 0.219,
-video2_audio1_text2: 0.331,
-video2_audio1_text3: 0.968,
-video2_audio1_text4: 0.851,
-video2_audio2_text1: 0.237,
-video2_audio2_text2: '0.265 Well Aligned! &#9989;',
-video2_audio2_text3: 0.987,
-video2_audio2_text4: 0.885,
-video2_audio3_text1: 0.322,
-video2_audio3_text2: 0.435,
-video2_audio3_text3: 0.731,
-video2_audio3_text4: 0.511,
-video2_audio4_text1: 0.353,
-video2_audio4_text2: 0.443,
-video2_audio4_text3: 0.778,
-video2_audio4_text4: 0.553,
-video3_audio1_text1: 0.578,
-video3_audio1_text2: 0.692,
-video3_audio1_text3: 0.534,
-video3_audio1_text4: 0.625,
-video3_audio2_text1: 0.587,
-video3_audio2_text2: 0.605,
-video3_audio2_text3: 0.555,
-video3_audio2_text4: 0.667,
-video3_audio3_text1: 0.787,
-video3_audio3_text2: 0.871,
-video3_audio3_text3: '0.363 Well Aligned! &#9989;',
-video3_audio3_text4: 0.396,
-video3_audio4_text1: 0.769,
-video3_audio4_text2: 0.839,
-video3_audio4_text3: 0.364,
-video3_audio4_text4: 0.380,
-video4_audio1_text1: 0.574,
-video4_audio1_text2: 0.705,
-video4_audio1_text3: 0.626,
-video4_audio1_text4: 0.221,
-video4_audio2_text1: 0.575,
-video4_audio2_text2: 0.610,
-video4_audio2_text3: 0.643,
-video4_audio2_text4: 0.260,
-video4_audio3_text1: 0.827,
-video4_audio3_text2: 0.929,
-video4_audio3_text3: 0.453,
-video4_audio3_text4: '0.001 Well Aligned! &#9989;',
-video4_audio4_text1: 0.800,
-video4_audio4_text2: 0.885,
-video4_audio4_text3: 0.460,
-video4_audio4_text4: '0.003 Well Aligned! &#9989;',
-}
+// const gramianValues = {
+// video1_audio1_text1: '0.230 Well Aligned! &#9989;',
+// video1_audio1_text2: 0.414,
+// video1_audio1_text3: 0.972,
+// video1_audio1_text4: 0.947,
+// video1_audio2_text1: 0.250,
+// video1_audio2_text2: 0.314,
+// video1_audio2_text3: 1.000,
+// video1_audio2_text4: 0.991,
+// video1_audio3_text1: 0.329,
+// video1_audio3_text2: 0.515,
+// video1_audio3_text3: 0.687,
+// video1_audio3_text4: 0.583,
+// video1_audio4_text1: 0.309,
+// video1_audio4_text2: 0.473,
+// video1_audio4_text3: 0.698,
+// video1_audio4_text4: 0.573,
+// video2_audio1_text1: 0.219,
+// video2_audio1_text2: 0.331,
+// video2_audio1_text3: 0.968,
+// video2_audio1_text4: 0.851,
+// video2_audio2_text1: 0.237,
+// video2_audio2_text2: '0.265 Well Aligned! &#9989;',
+// video2_audio2_text3: 0.987,
+// video2_audio2_text4: 0.885,
+// video2_audio3_text1: 0.322,
+// video2_audio3_text2: 0.435,
+// video2_audio3_text3: 0.731,
+// video2_audio3_text4: 0.511,
+// video2_audio4_text1: 0.353,
+// video2_audio4_text2: 0.443,
+// video2_audio4_text3: 0.778,
+// video2_audio4_text4: 0.553,
+// video3_audio1_text1: 0.578,
+// video3_audio1_text2: 0.692,
+// video3_audio1_text3: 0.534,
+// video3_audio1_text4: 0.625,
+// video3_audio2_text1: 0.587,
+// video3_audio2_text2: 0.605,
+// video3_audio2_text3: 0.555,
+// video3_audio2_text4: 0.667,
+// video3_audio3_text1: 0.787,
+// video3_audio3_text2: 0.871,
+// video3_audio3_text3: '0.363 Well Aligned! &#9989;',
+// video3_audio3_text4: 0.396,
+// video3_audio4_text1: 0.769,
+// video3_audio4_text2: 0.839,
+// video3_audio4_text3: 0.364,
+// video3_audio4_text4: 0.380,
+// video4_audio1_text1: 0.574,
+// video4_audio1_text2: 0.705,
+// video4_audio1_text3: 0.626,
+// video4_audio1_text4: 0.221,
+// video4_audio2_text1: 0.575,
+// video4_audio2_text2: 0.610,
+// video4_audio2_text3: 0.643,
+// video4_audio2_text4: 0.260,
+// video4_audio3_text1: 0.827,
+// video4_audio3_text2: 0.929,
+// video4_audio3_text3: 0.453,
+// video4_audio3_text4: '0.001 Well Aligned! &#9989;',
+// video4_audio4_text1: 0.800,
+// video4_audio4_text2: 0.885,
+// video4_audio4_text3: 0.460,
+// video4_audio4_text4: '0.003 Well Aligned! &#9989;',
+// }
 // const gramianValues = {
 //   video1_audio1_text1: '0.818 Well Aligned! &#9989;' ,
 //   video1_audio1_text2: 0.860,
@@ -771,32 +781,32 @@ video4_audio4_text4: '0.003 Well Aligned! &#9989;',
 // };
 
 // Function to calculate and display the Gramian value
-function updateGramianValue() {
-const selectedVideo = document.querySelector('input[name="video"]:checked')?.value;
-const selectedAudio = document.querySelector('input[name="audio"]:checked')?.value;
-const selectedText = document.querySelector('input[name="text"]:checked')?.value;
+// function updateGramianValue() {
+// const selectedVideo = document.querySelector('input[name="video"]:checked')?.value;
+// const selectedAudio = document.querySelector('input[name="audio"]:checked')?.value;
+// const selectedText = document.querySelector('input[name="text"]:checked')?.value;
 
-const key = `${selectedVideo}_${selectedAudio}_${selectedText}`;
-const value = gramianValues[key] || "Invalid combination";
+// const key = `${selectedVideo}_${selectedAudio}_${selectedText}`;
+// const value = gramianValues[key] || "Invalid combination";
 
-document.getElementById("gramian-value").innerHTML = value;
+// document.getElementById("gramian-value").innerHTML = value;
 
 
-}
-  document.addEventListener("DOMContentLoaded", function() {
-    updateGramianValue();
-  });
+// }
+//   document.addEventListener("DOMContentLoaded", function() {
+//     updateGramianValue();
+//   });
 
-// Add event listeners to inputs
-document.querySelectorAll('input[name="video"]').forEach((input) =>
-input.addEventListener("change", updateGramianValue)
-);
-document.querySelectorAll('input[name="audio"]').forEach((input) =>
-input.addEventListener("change", updateGramianValue)
-);
-document.querySelectorAll('input[name="text"]').forEach((input) =>
-input.addEventListener("change", updateGramianValue)
-);
+// // Add event listeners to inputs
+// document.querySelectorAll('input[name="video"]').forEach((input) =>
+// input.addEventListener("change", updateGramianValue)
+// );
+// document.querySelectorAll('input[name="audio"]').forEach((input) =>
+// input.addEventListener("change", updateGramianValue)
+// );
+// document.querySelectorAll('input[name="text"]').forEach((input) =>
+// input.addEventListener("change", updateGramianValue)
+// );
 </script>
 
 </body>
