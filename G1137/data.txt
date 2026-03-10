@@ -1,0 +1,162 @@
+return [
+  {
+    "id": 1,
+    "product_name": "Lumixia Ergonomic Chair",
+    "category": "Furniture",
+    "price": 249.99,
+    "discount": 15,
+    "in_stock": true
+  },
+  {
+    "id": 2,
+    "product_name": "Titanium Wireless Earbuds",
+    "category": "Electronics",
+    "price": 129.00,
+    "discount": 0,
+    "in_stock": true
+  },
+  {
+    "id": 3,
+    "product_name": "Organic Arabica Coffee Beans",
+    "category": "Groceries",
+    "price": 18.50,
+    "discount": 5,
+    "in_stock": false
+  },
+  {
+    "id": 4,
+    "product_name": "Peak Performance Running Shoes",
+    "category": "Apparel",
+    "price": 110.00,
+    "discount": 20,
+    "in_stock": true
+  },
+  {
+    "id": 5,
+    "product_name": "SmartHome Hub 2.0",
+    "category": "Electronics",
+    "price": 89.95,
+    "discount": 10,
+    "in_stock": true
+  },
+  {
+    "id": 6,
+    "product_name": "Ultra-Wide 34-inch Curved Monitor",
+    "category": "Electronics",
+    "price": 450.00,
+    "discount": 12,
+    "in_stock": true
+  },
+  {
+    "id": 7,
+    "product_name": "Cast Iron Skillet Set",
+    "category": "Kitchenware",
+    "price": 65.00,
+    "discount": 0,
+    "in_stock": true
+  },
+  {
+    "id": 8,
+    "product_name": "Yoga Mat High-Density",
+    "category": "Fitness",
+    "price": 35.99,
+    "discount": 5,
+    "in_stock": true
+  },
+  {
+    "id": 9,
+    "product_name": "Nordic Winter Parka",
+    "category": "Apparel",
+    "price": 195.00,
+    "discount": 30,
+    "in_stock": true
+  },
+  {
+    "id": 10,
+    "product_name": "Mechanical Gaming Keyboard",
+    "category": "Electronics",
+    "price": 120.00,
+    "discount": 15,
+    "in_stock": true
+  },
+  {
+    "id": 11,
+    "product_name": "Bamboo Bed Sheet Set",
+    "category": "Home Decor",
+    "price": 85.00,
+    "discount": 10,
+    "in_stock": false
+  },
+  {
+    "id": 12,
+    "product_name": "Electric Standing Desk",
+    "category": "Furniture",
+    "price": 399.00,
+    "discount": 20,
+    "in_stock": true
+  },
+  {
+    "id": 13,
+    "product_name": "Cold Brew Coffee Maker",
+    "category": "Kitchenware",
+    "price": 29.99,
+    "discount": 0,
+    "in_stock": true
+  },
+  {
+    "id": 14,
+    "product_name": "Noise Cancelling Headphones",
+    "category": "Electronics",
+    "price": 299.00,
+    "discount": 25,
+    "in_stock": true
+  },
+  {
+    "id": 15,
+    "product_name": "Adjustable Dumbbell Set",
+    "category": "Fitness",
+    "price": 150.00,
+    "discount": 10,
+    "in_stock": true
+  },
+  {
+    "id": 16,
+    "product_name": "Minimalist Leather Wallet",
+    "category": "Apparel",
+    "price": 45.00,
+    "discount": 5,
+    "in_stock": true
+  },
+  {
+    "id": 17,
+    "product_name": "Ceramic Essential Oil Diffuser",
+    "category": "Home Decor",
+    "price": 38.50,
+    "discount": 15,
+    "in_stock": true
+  },
+  {
+    "id": 18,
+    "product_name": "Professional Chef Knife",
+    "category": "Kitchenware",
+    "price": 115.00,
+    "discount": 8,
+    "in_stock": false
+  },
+  {
+    "id": 19,
+    "product_name": "4K Action Camera",
+    "category": "Electronics",
+    "price": 180.00,
+    "discount": 18,
+    "in_stock": true
+  },
+  {
+    "id": 20,
+    "product_name": "Velvet Throw Pillows (Set of 2)",
+    "category": "Home Decor",
+    "price": 24.00,
+    "discount": 0,
+    "in_stock": true
+  }
+]
