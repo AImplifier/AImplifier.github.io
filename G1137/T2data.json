@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "feedback": "The leaking pipe in the bathroom was fixed within an hour. Excellent response time!"
+  },
+  {
+    "id": 2,
+    "feedback": "The electrician left a mess on my desk and the light switch is still flickering."
+  },
+  {
+    "id": 3,
+    "feedback": "Great job on the AC repair; the room is finally cool again. Thank you!"
+  },
+  {
+    "id": 4,
+    "feedback": "Reported the broken window latch three days ago and still haven't seen anyone."
+  },
+  {
+    "id": 5,
+    "feedback": "The new paint job looks professional and the room feels much brighter now."
+  },
+  {
+    "id": 6,
+    "feedback": "Wall socket was replaced quickly, but they forgot to turn the breaker back on."
+  },
+  {
+    "id": 7,
+    "feedback": "Very polite staff and the door lock works perfectly now. Highly satisfied."
+  },
+  {
+    "id": 8,
+    "feedback": "The pest control treatment was ineffective; I still see ants everywhere."
+  },
+  {
+    "id": 9,
+    "feedback": "Smooth experience with the wardrobe repair. The hinges no longer squeak."
+  },
+  {
+    "id": 10,
+    "feedback": "Maintenance arrived without notice while I was sleeping. Very unprofessional."
+  }
+]
