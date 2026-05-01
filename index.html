@@ -4,1114 +4,1457 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Amplifying AI and Its Impacts">
-    <meta name="author" content="AImplifier">
-
-    <meta property="og:title" content="AImplifier">
+    <meta name="description" content="AImplifier R&D — Amplifying AI and Its Impacts. Multidisciplinary research in AI, brain-computer interfaces, and neuro-inspired systems.">
+    <meta name="author" content="AImplifier R&D">
+    <meta property="og:title" content="AImplifier R&D">
     <meta property="og:description" content="Amplifying AI and Its Impacts">
     <meta property="og:type" content="website">
+    <title>AImplifier R&D</title>
 
-    <title>AImplifier</title>
-
-    <!-- Bootstrap Core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
+
     <style>
         :root {
-            --primary: #1e88e5;
-            --primary-dark: #1565c0;
-            --secondary: #00bcd4;
-            --dark: #212121;
-            --light: #f5f5f5;
-            --success: #4caf50;
-            --warning: #ff9800;
-            --danger: #f44336;
-            --gray: #757575;
-            --light-gray: #eceff1;
-            --white: #ffffff;  /* ✅ Add this */
-            --size:   30px;
-            --gap:    0px;
-            --blue:   #4285F4;
-            --red:    #EA4335;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f4f7ff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0f5ff;
+            --accent-blue: #2563eb;
+            --accent-cyan: #0891b2;
+            --accent-purple: #7c3aed;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #0891b2 100%);
+            --accent-gradient-alt: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: rgba(15,23,42,0.09);
+            --border-accent: rgba(37,99,235,0.25);
+            --glow: 0 4px 24px rgba(37,99,235,0.10);
+            --size: 30px;
+            --gap: 0px;
+            --blue: #4285F4;
+            --red: #EA4335;
             --yellow: #FBBC05;
-            --green:  #34A853;
-            --empty:  white;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            color: var(--dark);
-            overflow-x: hidden;
-            margin: 0;
-/*              display: flex;*/
-              height: 100vh;
-              justify-content: center;
-              align-items: center;
-              background: var(--empty);
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-        }
-        
-        .section-heading {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-heading:after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: var(--primary);
-            bottom: -10px;
-            left: 25%;
-        }
-        
-        .section-subheading {
-            color: var(--gray);
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-        
-        /* Navbar Styling */
-        .navbar {
-            background-color: rgba(33, 33, 33, 0.95);
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .navbar.navbar-shrink {
-            padding: 0.5rem 0;
-        }
-        
-        .navbar-brand {
-            color: var(--light) !important;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            font-size: 1.8rem;
-        }
-        
-        .navbar-nav .nav-link {
-            color: var(--light) !important;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s ease;
-        }
-        
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link:focus {
-            color: var(--secondary) !important;
-        }
-        
-        .navbar-toggler {
-            border: none;
-            padding: 0.25rem 0.75rem;
-        }
-        
-        .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-        }
-        
-        /* Header/Hero Section */
-        header {
-            padding-top: 80px;
-            position: relative;
-/*            height: 110vh;*/
-            min-height: 100vh;
-            align-items: center;
-            color: var(--light);
-            overflow: hidden;
+            --green: #34A853;
+            --empty: transparent;
         }
 
-        /* Dark overlay gradient */
-        header::after {
-            content: "";
+        * { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 3px; }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background: rgba(255,255,255,0.90);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 1.1rem 0;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.7rem 0;
+            background: rgba(255,255,255,0.98);
+            box-shadow: 0 2px 20px rgba(15,23,42,0.08);
+        }
+
+        .navbar-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-nav .nav-link {
+            color: var(--text-secondary) !important;
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            transition: all 0.2s;
+            letter-spacing: 0.3px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--accent-blue) !important;
+        }
+
+        .navbar-toggler {
+            border: 1px solid var(--border);
+            padding: 0.35rem 0.65rem;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(71,85,105,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* ── HERO ── */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(160deg, #f0f5ff 0%, #ffffff 50%, #f8faff 100%);
+        }
+
+        #neural-canvas {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--white);
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-gradient {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 50% at 60% 40%, rgba(37,99,235,0.06) 0%, transparent 70%),
+                        radial-gradient(ellipse 40% 40% at 10% 70%, rgba(8,145,178,0.05) 0%, transparent 60%);
             z-index: 1;
         }
 
-        /* Foreground content */
-        header .container,
-        header .intro-text {
+        .hero-content {
             position: relative;
             z-index: 2;
-        }
-        
-        .intro-text {
-            text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .intro-lead-in {
-            font-size: 1.5rem;
-            line-height: 1.5;
-            margin-top: 2rem;
-/*            margin-bottom: 2rem;*/
-        }
-        
-        .intro-lead-in b {
-            color: var(--secondary);
-            font-weight: 700;
-            font-size: 1.8rem;
-        }
-        
-        .btn-xl {
-            background-color: var(--primary);
-            border: none;
-            color: var(--light);
-            padding: 1rem 2rem;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .btn-xl:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* About Section */
-        #about {
-            padding: 6rem 0;
-            background-color: var(--light-gray); /* Ensure this is applied */
+            padding-top: 80px;
         }
 
-        #projects {
-            padding: 6rem 0;
-/*            background-color: var(--light-gray); /* Ensure this is applied */*/
-        }
-       
-
-        #sponsor {
-            padding: 6rem 0;
-        }
-        
-        .service-card {
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .service-icon {
-            width: 100px;
-            height: 100px;
-            display: flex;
+        .hero-badge {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            gap: 0.5rem;
+            padding: 0.35rem 1rem;
+            background: rgba(37,99,235,0.07);
+            border: 1px solid rgba(37,99,235,0.2);
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--accent-blue);
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent-cyan);
             border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-        }
-        
-        .service-heading {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
+            animation: pulse-dot 2s ease infinite;
         }
 
-        #team {
-            padding: 6rem 0;
-/*            background-color: var(--light-gray); /* Ensure this is applied */*/
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.7); }
         }
 
-        #committee {
-            padding: 6rem 0;
-            background-color: var(--white); /* Ensure this is applied */
+        .hero-logo-grid {
+            /* right-column: no bottom margin needed */
         }
 
-        #publications {
-            padding: 6rem 0;
-            background-color: var(--light-gray); /* Ensure this is applied */
-        }
-
-        #partners {
-            padding: 6rem 0;
-            background-color: var(--light-gray); /* Ensure this is applied */
-        }
-        
-        /* Timeline Section */
-        #timeline {
-            padding: 6rem 0;
-            background-color: var(--light-gray);
-        }
-        
-        .timeline {
-            position: relative;
-            padding: 0;
-            list-style: none;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            margin-left: -2px;
-            background-color: var(--light);
-        }
-        
-        .timeline > li {
-            position: relative;
-            margin-bottom: 3rem;
-            min-height: 200px;
-        }
-        
-        .timeline > li:before,
-        .timeline > li:after {
-            content: ' ';
-            display: table;
-        }
-        
-        .timeline > li:after {
-            clear: both;
-        }
-        
-        .timeline > li .timeline-panel {
-            float: left;
-            position: relative;
-            width: 46%;
-            padding: 2rem;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .timeline > li .timeline-panel:hover {
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timeline > li.timeline-inverted > .timeline-panel {
-            float: right;
-        }
-        
-        .timeline > li .timeline-image {
-            position: absolute;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            margin-left: -50px;
-            background-color: var(--primary);
-            border-radius: 50%;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            z-index: 2;
-        }
-        
-        .timeline > li.timeline-inverted .timeline-image {
-            background-color: var(--secondary);
-        }
-        
-        .timeline > li .timeline-image h4 {
-            margin: 0;
-            text-align: center;
-            font-size: 1rem;
-            line-height: 1.3;
-        }
-        
-        .timeline-heading h4 {
-            margin-top: 0;
-            color: var(--dark);
-        }
-        
-        .timeline-heading h4.subheading {
-            text-transform: none;
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .timeline-body > p,
-        .timeline-body > ul {
-            margin-bottom: 0;
-        }
-        
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            background-color: var(--dark);
-            color: var(--light);
-            text-align: center;
-        }
-        
-        .copyright {
-            font-size: 0.9rem;
-            line-height: 40px;
-            text-transform: none;
-        }
-        
-        .social-buttons {
-            margin-bottom: 0;
-        }
-        
-        .social-buttons li a {
-            display: block;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 1.2rem;
-            line-height: 40px;
-            color: white;
-            background-color: var(--gray);
-            transition: all 0.3s ease;
-        }
-        
-        .social-buttons li a:hover {
-            background-color: var(--primary);
-            transform: scale(1.1);
-        }
-
-        /* Committee Section Styling */
-        .committee-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            padding: 2rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            border: 1px solid var(--light-gray);
-            text-align: center;
-        }
-
-        .committee-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .committee-img-container {
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
             margin-bottom: 1.5rem;
         }
 
-        .committee-img-placeholder {
-            width: 120px;
-            height: 120px;
+        .hero-title .gradient-text {
+            background: linear-gradient(90deg, #EA4335 0%, #4285F4 50%, #34A853 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            font-weight: 400;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-cta-group {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-custom {
+            padding: 0.75rem 2rem;
+            background: var(--accent-gradient);
+            border: none;
             color: white;
-            border-radius: 50%;
-            margin: 0 auto;
-            font-size: 3rem;
-        }
-
-        .committee-info h4 {
             font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
+            font-size: 0.95rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 20px rgba(59,130,246,0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .committee-title {
+        .btn-primary-custom:hover {
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(59,130,246,0.45);
+        }
+
+        .btn-outline-custom {
+            padding: 0.75rem 2rem;
+            background: transparent;
+            border: 1px solid var(--border-accent);
+            color: var(--text-primary);
             font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        /* Sponsor Section Styling */
-        .sponsor-card {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem;
-            height: 100%;
-            transition: all 0.3s ease;
-            text-align: center;
-            border: 1px solid var(--light-gray);
+        .btn-outline-custom:hover {
+            color: var(--text-primary);
+            background: rgba(59,130,246,0.08);
+            border-color: var(--accent-blue);
         }
 
-        .sponsor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        /* Stats bar */
+        .stats-bar {
+            margin-top: 5rem;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
         }
 
-        .sponsor-img-container {
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* ── SECTIONS SHARED ── */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-cyan);
+            margin-bottom: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-eyebrow.g-red    { color: #EA4335; }
+        .section-eyebrow.g-blue   { color: #4285F4; }
+        .section-eyebrow.g-green  { color: #34A853; }
+        .section-eyebrow.g-yellow { color: #b8860b; }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--text-primary);
             margin-bottom: 1rem;
+            letter-spacing: -0.5px;
         }
 
-        .sponsor-img-placeholder {
-            width: 100px;
-            height: 100px;
+        .section-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 640px;
+            line-height: 1.8;
+        }
+
+        /* ── ABOUT ── */
+        #about {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #about::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .about-text {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 1.9;
+            text-align: justify;
+        }
+
+        .about-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .pillar-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .pillar-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+            box-shadow: var(--glow);
+        }
+
+        .pillar-card:hover::before {
+            opacity: 1;
+        }
+
+        .pillar-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            border-radius: 50%;
-            margin: 0 auto;
-            font-size: 2.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1.25rem;
         }
 
-        .sponsor-card.platinum .sponsor-img-placeholder {
-            background: linear-gradient(135deg, #e5e4e2, #afb1b3);
+        .pillar-icon.blue   { background: rgba(66,133,244,0.10);  color: #4285F4; }
+        .pillar-icon.cyan   { background: rgba(52,168,83,0.10);   color: #34A853; }
+        .pillar-icon.purple { background: rgba(234,67,53,0.10);   color: #EA4335; }
+
+        .pillar-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            padding: 1.5rem 1.75rem;
         }
 
-        .sponsor-card.gold .sponsor-img-placeholder {
-            background: linear-gradient(135deg, #FFD700, #FFA500);
+        .pillar-row .pillar-icon {
+            margin-bottom: 0;
+            flex-shrink: 0;
         }
 
-        .sponsor-card.academic .sponsor-img-placeholder {
-            background: linear-gradient(135deg, var(--primary), #002855);
+        .pillar-body {
+            flex: 1;
         }
 
-        .sponsor-card.media .sponsor-img-placeholder {
-            background: linear-gradient(135deg, #6a0dad, #9370DB);
-        }
-
-        .sponsor-info h4, .sponsor-info h5 {
+        .pillar-title {
+            font-size: 1.05rem;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.4rem;
+            text-align: left;
         }
 
-        .sponsor-card.platinum {
-            border-top: 5px solid #afb1b3;
+        .pillar-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            text-align: left;
         }
 
-        .sponsor-card.gold {
-            border-top: 5px solid #FFD700;
+        /* ── PROJECTS ── */
+        #projects {
+            background: var(--bg-primary);
+            position: relative;
         }
 
-        .sponsor-card.academic {
-            border-top: 5px solid var(--primary);
+        #projects::before {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -200px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139,92,246,0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .sponsor-card.media {
-            border-top: 5px solid #6a0dad;
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        .text-center {
-            text-align: center;
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 20px;
+            border: 1px solid transparent;
+            background: var(--accent-gradient) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: destination-out;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.35s;
+            pointer-events: none;
         }
 
-        .center-div {
-            justify-content: center;
+        .project-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), var(--glow);
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #4285F4;
+            background: rgba(66,133,244,0.08);
+            border: 1px solid rgba(66,133,244,0.25);
+            padding: 0.3rem 0.7rem;
+            border-radius: 6px;
+            white-space: nowrap;
+            margin-top: 0.2rem;
+        }
+
+        .project-number.g-green  { color: #34A853; background: rgba(52,168,83,0.08);  border-color: rgba(52,168,83,0.25);  }
+        .project-number.g-red    { color: #EA4335; background: rgba(234,67,53,0.08);  border-color: rgba(234,67,53,0.25);  }
+        .project-number.g-yellow { color: #8a6000; background: rgba(251,188,5,0.10); border-color: rgba(251,188,5,0.35);  }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .project-status {
+            display: inline-flex;
             align-items: center;
+            gap: 0.4rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
         }
 
-        .intro-logo {
-            max-width: 200px;      /* keeps it neat on large screens */
-            width: 100%;
-            height: auto;
-            margin-bottom: 1.5rem; /* space before the title */
+        .status-active {
+            background: rgba(22,163,74,0.09);
+            color: #16a34a;
+            border: 1px solid rgba(22,163,74,0.25);
         }
 
-        .court {
-            max-width: 400px;      /* keeps it neat on large screens */
+        .status-soon {
+            background: rgba(202,138,4,0.09);
+            color: #b45309;
+            border: 1px solid rgba(202,138,4,0.25);
+        }
+
+        .status-active::before, .status-soon::before {
+            content: '';
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .project-images {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+            justify-content: center;
+        }
+
+        .project-images img {
+            max-width: 360px;
             width: 100%;
             height: auto;
-            margin-bottom: 1.5rem; /* space before the title */
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
         }
-        
-        /* Responsive Adjustments */
-        @media (max-width: 991px) {
-            .timeline > li .timeline-panel {
-                width: 40%;
-            }
+
+        .project-images img:hover {
+            border-color: var(--border-accent);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
-        
-        @media (max-width: 767px) {
-            .timeline:before {
-                left: 40px;
-            }
-            
-            .timeline > li .timeline-panel {
-                width: calc(100% - 90px);
-                float: right;
-            }
-            
-            .timeline > li .timeline-image {
-                left: 40px;
-                margin-left: 0;
-                width: 80px;
-                height: 80px;
-            }
-            
-            .timeline > li.timeline-inverted > .timeline-panel {
-                float: right;
-            }
-            
-            .section-heading {
-                font-size: 2rem;
-            }
-            
-            .intro-lead-in {
-                font-size: 1.2rem;
-            }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.25rem;
+            background: rgba(37,99,235,0.07);
+            border: 1px solid rgba(37,99,235,0.2);
+            color: #1d4ed8;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.25s;
         }
+
+        .project-link:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            color: white;
+        }
+
+        .project-divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            margin: 1rem 0;
+        }
+
+        .coming-soon-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* ── PUBLICATIONS ── */
+        #publications {
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #publications::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .pub-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 3px solid transparent;
+        }
+
+        .pub-item:hover {
+            background: var(--bg-card-hover);
+            border-left-color: var(--accent-blue);
+            transform: translateX(4px);
+        }
+
+        .pub-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.2rem 0.7rem;
+            border-radius: 6px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pub-badge.preprint {
+            background: rgba(251,188,5,0.10);
+            color: #8a6000;
+            border: 1px solid rgba(251,188,5,0.35);
+        }
+
+        .pub-badge.accepted {
+            background: rgba(66,133,244,0.08);
+            color: #1558c0;
+            border: 1px solid rgba(66,133,244,0.25);
+        }
+
+        .pub-badge.acl {
+            background: rgba(234,67,53,0.08);
+            color: #b52115;
+            border: 1px solid rgba(234,67,53,0.25);
+        }
+
+        .pub-badge.emnlp {
+            background: rgba(52,168,83,0.08);
+            color: #1a7a3c;
+            border: 1px solid rgba(52,168,83,0.25);
+        }
+
+        .pub-text {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .pub-counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+        }
+
+        /* ── TEAM ── */
+        #team {
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .team-role-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            transition: all 0.3s;
+        }
+
+        .team-role-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+        }
+
+        .team-role-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-cyan);
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-role-card.featured {
+            grid-column: 1 / -1;
+            background: rgba(59,130,246,0.05);
+            border-color: var(--border-accent);
+        }
+
+        .team-members {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .member-chip {
+            padding: 0.3rem 0.8rem;
+            background: #f8faff;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: 0.82rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .member-chip:hover {
+            background: rgba(37,99,235,0.08);
+            border-color: rgba(37,99,235,0.3);
+            color: #1d4ed8;
+        }
+
+        .member-chip.featured {
+            background: rgba(37,99,235,0.08);
+            border-color: rgba(37,99,235,0.25);
+            color: #1d4ed8;
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+        }
+
+        /* ── COLLABORATORS ── */
+        #partners {
+            background: var(--bg-secondary);
+            position: relative;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .collab-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.75rem;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collab-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--accent-gradient);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .collab-card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-accent);
+            transform: translateY(-4px);
+        }
+
+        .collab-card:hover::before {
+            opacity: 1;
+        }
+
+        .collab-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 12px;
+            background: rgba(59,130,246,0.08);
+            border: 1px solid rgba(59,130,246,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: #60a5fa;
+            font-size: 1.2rem;
+        }
+
+        .collab-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .contact-note {
+            background: rgba(59,130,246,0.05);
+            border: 1px solid rgba(59,130,246,0.15);
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-note i {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            flex-shrink: 0;
+        }
+
+        .contact-note a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-note a:hover { text-decoration: underline; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2.5rem 0;
+        }
+
+        .footer-brand {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-copy {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ── LOGO GRID ── */
         .grid4 {
-          display: grid;
-          grid-template-columns: repeat(12, var(--size));
-          grid-template-rows:    repeat(12, var(--size));
-          gap: var(--gap);
+            display: grid;
+            grid-template-columns: repeat(12, var(--size));
+            grid-template-rows: repeat(12, var(--size));
+            gap: var(--gap);
         }
+
         .container4 {
-          display: flex;
-          justify-content: center; /* centers horizontally */
-    /*      align-items: center;     /* centers vertically */*/
-          height: 100vh;           /* or any height you need */
+            display: flex;
+            justify-content: center;
         }
 
         .cell {
-          width:  var(--size);
-          height: var(--size);
-          box-sizing: border-box;
-          background: var(--empty);
-          transition: background-color 0.3s ease;
+            width: var(--size);
+            height: var(--size);
+            box-sizing: border-box;
+            background: transparent;
+            transition: background-color 0.3s ease;
         }
 
-        .blue, .red, .yellow, .green, .empty {
-          /* class identifiers only */
+        /* ── DIVIDERS ── */
+        .gradient-line {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, var(--border-accent) 50%, transparent 100%);
+            margin: 2rem 0;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .team-role-card.featured {
+                grid-column: 1;
+            }
+            .stats-bar {
+                gap: 1.5rem;
+            }
+            .hero-title {
+                letter-spacing: -1px;
+            }
+            .project-header {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
         }
     </style>
 </head>
 
 <body id="page-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+    <!-- ── NAVBAR ── -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand" href="#page-top">AImplifier</a>
+            <a class="navbar-brand" href="#page-top">AImplifier R&D</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#publications">Publications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#team">Team</a>
-                    </li>
-                    
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#publications">Publications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partners">Collaborators</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <div class="intro-text">
-
-                <div class="intro-lead-in">
-                    <div class="container4">
-                        <div class="grid4"></div>
+    <!-- ── HERO ── -->
+    <section id="hero">
+        <canvas id="neural-canvas"></canvas>
+        <div class="hero-gradient"></div>
+        <div class="container hero-content">
+            <div class="row align-items-start">
+                <div class="col-lg-6">
+                    <div class="hero-badge">
+                        <span class="dot"></span>
+                        Research · Education · Development
                     </div>
-                    <br>
-                    <b style="font-size: 3rem; color: black;">AImplifier R&D</b> <br>
-                    <b style="font-size: 1rem; color: gray;">Amplifying AI & Its Impacts</b> <br>
-                    <!-- <b style="font-size: 1rem; color: gray;">Research | Education | Development</b> -->
+
+                    <h1 class="hero-title">
+                        <span class="gradient-text">AImplifier</span><br>
+                        R&amp;D Lab
+                    </h1>
+                    <p class="hero-subtitle">
+                        A multidisciplinary research lab advancing the frontiers of artificial intelligence, brain-computer interfaces, and neuro-inspired systems — to amplify human potential and drive positive change.
+                    </p>
+
+                    <div class="hero-cta-group">
+                        <a href="#projects" class="btn-primary-custom">
+                            <i class="fas fa-flask"></i> Explore Research
+                        </a>
+                        <a href="#publications" class="btn-outline-custom">
+                            <i class="fas fa-file-alt"></i> Publications
+                        </a>
+                    </div>
+
+                    <!-- <div class="stats-bar">
+                        <div class="stat-item">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Publications 2025</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5</span>
+                            <span class="stat-label">Active Projects</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">4</span>
+                            <span class="stat-label">Partner Institutions</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">ACL</span>
+                            <span class="stat-label">Top-tier Venues</span>
+                        </div>
+                    </div> -->
                 </div>
 
-                
- 
+                <!-- Logo grid — right column -->
+                <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                    <div class="hero-logo-grid">
+                        <div class="grid4" id="heroGrid"></div>
+                    </div>
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <!-- About Section -->
+    <!-- ── ABOUT ── -->
     <section id="about">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <br>
-                    
-                    <h3 class="section-subheading text-muted" style="text-align: justify;">AImplifier R&D is a multidisciplinary Research, Education, and Development Team committed to pushing the frontiers of artificial intelligence to drive positive change across humanity, education, and science. We strive to understand and amplify intelligence, both human and machine, and harness the power to shape a better, more equitable world.</h3>
+            <div class="row gy-5">
+                <div class="col-lg-5">
+                    <div class="section-eyebrow g-red">// Who We Are</div>
+                    <h2 class="section-title">Advancing AI for<br>Human Good</h2>
+                    <p class="about-text">
+                        AImplifier R&D is a multidisciplinary team committed to pushing the frontiers of artificial intelligence to drive <strong>positive change across humanity, education, and science</strong>. We strive to understand and amplify intelligence — both human and machine — and harness its power to shape a better, more equitable world.
+                    </p>
                 </div>
-            </div>
-            
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-robot"></i>
+                <div class="col-lg-7">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <div class="pillar-card pillar-row">
+                                <div class="pillar-icon blue"><i class="fas fa-robot"></i></div>
+                                <div class="pillar-body">
+                                <div class="pillar-title">Research</div>
+                                <p class="pillar-text">Bridging AI and brain-computer interfaces to deepen our understanding of intelligence, cognition, and neuro-diseases like epilepsy.</p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="service-heading">Research</h4>
-                        <p class="text-muted" style="text-align: justify;">We bring together insights from artificial intelligence and brain-computer interface to deepen our understanding of intelligence, cognition, and their associations with psychiatric disorders. We aspire to uncover valuable insights that could contribute to personalized treatment of neuro-diseases (e.g., epilepsy), and advance the development of more neuro-inspired artificial intelligence systems (e.g., multi-modal AI).</p>
-                        
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-user"></i>
+                        <div class="col-12">
+                            <div class="pillar-card pillar-row">
+                                <div class="pillar-icon cyan"><i class="fas fa-graduation-cap"></i></div>
+                                <div class="pillar-body">
+                                <div class="pillar-title">Education</div>
+                                <p class="pillar-text">Reading Groups, AI talks, and competitions that nurture the next generation of tech talent across AI, data science, and biomedical innovation.</p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="service-heading">Education</h4>
-                        <p class="text-muted" style="text-align: justify;">We organize Reading Group, AI talks, and AI competitions that empower university students to embrace problem-solving, strive for excellence, and ignite their passion for programming, AI, data science, and biomedical innovation. Through technology-driven AI talks and competitions, we connect bright minds and nurture the next generation of tech talent, shaping the future of innovation.</p>
-                        
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-4">
-                    <div class="service-card text-center">
-                        <div class="service-icon">
-                            <i class="fas fa-brain"></i>
+                        <div class="col-12">
+                            <div class="pillar-card pillar-row">
+                                <div class="pillar-icon purple"><i class="fas fa-microchip"></i></div>
+                                <div class="pillar-body">
+                                <div class="pillar-title">Development</div>
+                                <p class="pillar-text">Building efficient models for solar energy prediction, seizure detection, sleep disorder diagnostics, and climate policy optimization.</p>
+                                </div>
+                            </div>
                         </div>
-                        <h4 class="service-heading">Development</h4>
-                        <p class="text-muted" style="text-align: justify;">We develop efficient time-series models and softwares for solar energy prediction, enhances seizure prediction and epileptogenic zone localization to support surgical planning, and refines diagnostic methodologies for sleep disorders by decoding brain signals. Furthermore, we develop AI models to formulate climate policies that optimize environmental, economic, and social trade-offs. </p>
-                        
                     </div>
-                </div>
-            </div>
-
-            
-        </div>
-    </section>
-
-   
-
-    <!-- Placeholder sections for Rules, Committees, and Sponsors -->
-    <section id="projects" class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Projects</h2>
-                    <h3 class="section-subheading text-muted">GENII: EEG & Source Imaging on Cloud with AI</h3>
-                    <img src="img/EEG.png"
-                    alt="court"
-                    class="court">
-                    <img src="img/GENII.png"
-                    alt="court"
-                    class="court">
-                    <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
-                        <a href="https://github.com/genii-open" target="_blank" 
-                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
-                            More Details
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <div style="width: 400px; height: 2px; background: gray; margin: 0 auto;"></div>
-            <br>
-            <br>
-
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <!-- <h2 class="section-heading">Projects</h2> -->
-                    <h3 class="section-subheading text-muted">National AI, HCI, &amp; BCI Competition (dPickleBall)</h3>
-                    <img src="img/Court.png"
-                    alt="court"
-                    class="court">
-                    <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
-                        <a href="https://dpickleball.github.io/" target="_blank" 
-                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
-                            More Details
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <div style="width: 400px; height: 2px; background: gray; margin: 0 auto;"></div>
-            <br>
-            <br>
-
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <!-- <h2 class="section-heading">Projects</h2> -->
-                    <h3 class="section-subheading text-muted">Brain Computer Interface</h3>
-                    <!-- <img src="img/EEG.png"
-                    alt="court"
-                    class="court">
-                    <img src="img/GENII.png"
-                    alt="court"
-                    class="court"> -->
-                    TBA
-                    <!-- <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
-                        <a href="https://github.com/genii-open" target="_blank" 
-                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
-                            More Details
-                        </a>
-                        
-                    </div> -->
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <div style="width: 400px; height: 2px; background: gray; margin: 0 auto;"></div>
-            <br>
-            <br>
-
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <!-- <h2 class="section-heading">Projects</h2> -->
-                    <h3 class="section-subheading text-muted">Foundation Models &amp; Model Merging</h3>
-                    <!-- <img src="img/EEG.png"
-                    alt="court"
-                    class="court">
-                    <img src="img/GENII.png"
-                    alt="court"
-                    class="court"> -->
-                    TBA
-                    <!-- <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
-                        <a href="https://github.com/genii-open" target="_blank" 
-                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
-                            More Details
-                        </a>
-                        
-                    </div> -->
-                </div>
-            </div>
-
-            <br>
-            <br>
-            <div style="width: 400px; height: 2px; background: gray; margin: 0 auto;"></div>
-            <br>
-            <br>
-
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <!-- <h2 class="section-heading">Projects</h2> -->
-                    <h3 class="section-subheading text-muted">Multi-Agent Reinforcement Learning &amp; Climate AI</h3>
-                    <!-- <img src="img/EEG.png"
-                    alt="court"
-                    class="court">
-                    <img src="img/GENII.png"
-                    alt="court"
-                    class="court"> -->
-                    TBA
-                    <!-- <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 20px;">
-                        <a href="https://github.com/genii-open" target="_blank" 
-                           style="display: inline-block; padding: 12px 24px; background-color: #d3d3d3; color: black; text-decoration: none; border-radius: 6px; font-size: 16px; font-weight: bold;">
-                            More Details
-                        </a>
-                        
-                    </div> -->
-                </div>
-            </div>
-
-
-
-        </div>
-    </section>
-
-
-    <section id="publications" class="">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12 text-center">
-        <h2 class="section-heading">Publications since 2025</h2>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-12 student-committee-text">
-        <ol class="publication-list">
-          
-
-          <li>
-            <span>[Preprint] Puah, J.H., Goh, S.K., Zhang, Z., Ye, Z., Chan, C.K., Lim, K.S., Fong, S.L. and Woon, K.S., 2025. EEGDM: EEG Representation Learning via Generative Diffusion Model. arXiv preprint arXiv:2508.14086.</span>
-          </li>
-
-          <li>
-            <span>[Preprint] Chin, B.W.H., Yew, Y.T., Wu, H., Liang, L., Chan, C.K., Zain, N.M., Samdin, S.B. and Goh, S.K., 2025. SleepDIFFormer: Sleep Stage Classification via Multivariate Differential Transformer. arXiv preprint arXiv:2508.15215.</span>
-          </li> 
-
-          <li>
-            <span>[EMNLP, accepted] Fang, Z., Du, G., Yu, S., Guo, Y., Zhang, Y., Cao, Y., Li, J., Tang, H.K. and Goh, S.K., 2025. To See a World in a Spark of Neuron: Disentangling Multi-task Interference for Training-free Model Merging. arXiv preprint arXiv:2503.05320.</span>
-          </li>
-
-          <li>
-            <span>[ACL] Du, G., Fang, Z., Li, J., Li, J., Jiang, R., Yu, S., Guo, Y., Chen, Y., Goh, S.K., Tang, H.K. and He, D., 2025. Neural parameter search for slimmer fine-tuned models and better transfer. arXiv preprint arXiv:2505.18713.</span>
-          </li>
-          <li>
-            <span>[ACL] Li, J., Du, G., Li, J., Goh, S.K., Wang, W., Wang, Y., Liu, F., Tang, H.K., Alharbi, S., He, D. and Zhang, M., 2025. Multi-modality expansion and retention for llms through parameter merging and decoupling. arXiv preprint arXiv:2505.17110.</span>
-          </li>
-          
-        </ol>
-      </div>
-    </div>
-  </div>
-</section>
-
-<style>
-  .publication-list {
-    padding-left: 100px;  /* indentation */
-    padding-right: 100px;  /* indentation */
-    margin-top: 10px;
-  }
-  .publication-list li {
-    margin-bottom: 5px; /* spacing between items */
-    text-align: justify; /* cleaner alignment */
-  }
-</style>
-
-
-
-    <section id="team" class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Team</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 student-committee-text text-center">
-                    
-                    <h4>Point of Contact</h4>
-                    <p>Sim Kuan GOH</p>
-                    <h4>Scientific Advisors</h4>
-                    <p>Kheng Seang LIM | Silei FONG | Chow Khuen CHAN | Tanka TANG | Vincent WOON</p>
-                    <h4>Postgraduate Researchers</h4>
-                    <p>Jia Hong PUAH | Yuin Torng YEW | Seohyun AHN | Yong Ler LAI</p>
-                    <h4>Undergraduate Researchers</h4>
-                    <p>TBA</p>
-                    <h4>Alumni</h4>
-                    <p>TBA</p>
-                        
-                   
                 </div>
             </div>
         </div>
     </section>
 
-
-
-    <section id="partners" class="py-5">
+    <!-- ── PROJECTS ── -->
+    <section id="projects">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Collaborators</h2>
-                    <h5 class="section-subheading text-muted">Please contact simkuangoh@gmail.com for collaboration.</h5>
-                </div>
-            </div>
-            <!-- Academic Partners -->
             <div class="row mb-5">
-                <!-- <div class="col-lg-12">
-                    <h3 class="text-center mb-4">Partners</h3>
-                </div> -->
-                
+                <div class="col-lg-8">
+                    <div class="section-eyebrow g-blue">// Active Research</div>
+                    <h2 class="section-title">Projects</h2>
+                    <p class="section-desc">From EEG diffusion models to reinforcement learning environments and training-free model merging, our work spans neuroscience, machine learning, and agentic AI.</p>
+                </div>
+            </div>
 
-
-                <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>Xiamen University Malaysia</h5>
-                        </div>
+            <!-- Project 1: EEGDM -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-number">P-01</span>
+                    <div>
+                        <h3 class="project-title">EEGDM — EEG Representation Learning via Generative Diffusion Model</h3>
+                        <span class="project-status status-active">Active</span>
                     </div>
                 </div>
+                <p style="color: var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">
+                    A self-supervised diffusion model for learning rich EEG signal representations, featuring a specialized State-Space Model architecture and latent fusion transformer — applied to downstream tasks such as seizure detection.
+                </p>
+                <a href="https://github.com/jhpuah/EEGDM" target="_blank" class="project-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
 
-                <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>University Malaya Medical Center</h5>
-                        </div>
+            <!-- Project 2: GENII -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-number g-green">P-02</span>
+                    <div>
+                        <h3 class="project-title">GENII — EEG &amp; Brain Source Imaging on Cloud with AI</h3>
+                        <span class="project-status status-active">Active</span>
                     </div>
                 </div>
+                <p style="color: var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">
+                    An open-source platform democratising EEG and brain source imaging for epilepsy diagnosis and neurological research, integrating AI and cloud computing to make advanced neuroimaging accessible in clinical practice.
+                </p>
+                <div class="project-images">
+                    <img src="img/EEG.png" alt="EEG Analysis">
+                    <img src="img/GENII.png" alt="GENII Platform">
+                </div>
+                <a href="https://github.com/genii-open" target="_blank" class="project-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
 
-                <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>Harbin Institute of Technology</h5>
-                        </div>
+            <!-- Project 3: dPickleBall -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-number g-red">P-03</span>
+                    <div>
+                        <h3 class="project-title">dPickleBall — Reinforcement Learning Environment for Pickleball AI</h3>
+                        <span class="project-status status-active">Active</span>
                     </div>
                 </div>
+                <p style="color: var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">
+                    A physics-based reinforcement learning environment simulating competitive pickleball gameplay, where AI agents learn to play and compete autonomously — serving as the challenge domain for a national AI, HCI &amp; BCI competition.
+                </p>
+                <div class="project-images">
+                    <img src="img/Court.png" alt="dPickleBall Environment">
+                </div>
+                <a href="https://github.com/dPickleball/dPickleBallEnv" target="_blank" class="project-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
 
-                <div class="col-md-3 mb-4">
-                    <div class="sponsor-card academic">
-                        <div class="sponsor-img-container">
-                            <div class="sponsor-img-placeholder">
-                                <i class="fas fa-university"></i>
-                            </div>
-                        </div>
-                        <div class="sponsor-info">
-                            <h5>Hong Kong University of Science of Technology</h5>
-                        </div>
+            <!-- Project 4: NeuroMerging -->
+            <div class="project-card">
+                <div class="project-header">
+                    <span class="project-number g-yellow">P-04</span>
+                    <div>
+                        <h3 class="project-title">NeuroMerging — Training-Free Model Merging via Neuronal Subspace</h3>
+                        <span class="project-status status-active">Active</span>
                     </div>
                 </div>
-                
+                <p style="color: var(--text-secondary); font-size:0.9rem; margin-bottom:1rem;">
+                    A training-free framework for merging multiple fine-tuned models across different tasks, mitigating performance degradation through neuronal subspace decomposition to enable efficient multi-task model composition.
+                </p>
+                <a href="https://github.com/ZzzitaoFang/NeuroMerging" target="_blank" class="project-link">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+            </div>
+
+            <!-- Projects coming soon -->
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="project-card" style="padding: 1.75rem;">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <span class="project-number">P-05</span>
+                            <span class="project-status status-soon" style="margin-top:0.1rem;">Coming Soon</span>
+                        </div>
+                        <h5 style="color:var(--text-primary); font-size:0.95rem; margin-bottom:0.5rem;">Efficient Agentic AI Adaptation</h5>
+                        <p class="pillar-text">Lightweight adaptation strategies enabling agentic AI systems to generalise rapidly across diverse tasks and environments.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card" style="padding: 1.75rem;">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <span class="project-number g-green">P-06</span>
+                            <span class="project-status status-soon" style="margin-top:0.1rem;">Coming Soon</span>
+                        </div>
+                        <h5 style="color:var(--text-primary); font-size:0.95rem; margin-bottom:0.5rem;">Safety &amp; Security in Agentic AI</h5>
+                        <p class="pillar-text">Research into alignment, robustness, and adversarial defence for autonomous AI agents operating in high-stakes settings.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card" style="padding: 1.75rem;">
+                        <div class="d-flex align-items-start gap-2 mb-2">
+                            <span class="project-number g-red">P-07</span>
+                            <span class="project-status status-soon" style="margin-top:0.1rem;">Coming Soon</span>
+                        </div>
+                        <h5 style="color:var(--text-primary); font-size:0.95rem; margin-bottom:0.5rem;">Agentic AI in Business &amp; Enterprise</h5>
+                        <p class="pillar-text">Deploying multi-agent workflows for real-world enterprise automation, decision support, and intelligent process orchestration.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- ── PUBLICATIONS ── -->
+    <section id="publications">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8">
+                    <div class="section-eyebrow g-green">// Since 2025</div>
+                    <h2 class="section-title">Publications</h2>
+                    <p class="section-desc">Our work appears in top-tier venues including ACL and EMNLP, covering model merging, EEG representation learning, and sleep stage classification.</p>
+                </div>
+            </div>
 
-    <!-- Footer -->
+            <div class="pub-item">
+                <div class="pub-counter">01 / 05</div>
+                <div class="pub-badge preprint">Preprint</div>
+                <p class="pub-text">Puah, J.H., Goh, S.K., Zhang, Z., Ye, Z., Chan, C.K., Lim, K.S., Fong, S.L. and Woon, K.S., 2025. <strong style="color:var(--text-primary)">EEGDM: EEG Representation Learning via Generative Diffusion Model.</strong> arXiv:2508.14086.</p>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-counter">02 / 05</div>
+                <div class="pub-badge preprint">Preprint</div>
+                <p class="pub-text">Chin, B.W.H., Yew, Y.T., Wu, H., Liang, L., Chan, C.K., Zain, N.M., Samdin, S.B. and Goh, S.K., 2025. <strong style="color:var(--text-primary)">SleepDIFFormer: Sleep Stage Classification via Multivariate Differential Transformer.</strong> arXiv:2508.15215.</p>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-counter">03 / 05</div>
+                <div class="pub-badge emnlp">EMNLP · Accepted</div>
+                <p class="pub-text">Fang, Z., Du, G., Yu, S., Guo, Y., Zhang, Y., Cao, Y., Li, J., Tang, H.K. and Goh, S.K., 2025. <strong style="color:var(--text-primary)">To See a World in a Spark of Neuron: Disentangling Multi-task Interference for Training-free Model Merging.</strong> arXiv:2503.05320.</p>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-counter">04 / 05</div>
+                <div class="pub-badge acl">ACL</div>
+                <p class="pub-text">Du, G., Fang, Z., Li, J., Li, J., Jiang, R., Yu, S., Guo, Y., Chen, Y., Goh, S.K., Tang, H.K. and He, D., 2025. <strong style="color:var(--text-primary)">Neural Parameter Search for Slimmer Fine-Tuned Models and Better Transfer.</strong> arXiv:2505.18713.</p>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-counter">05 / 05</div>
+                <div class="pub-badge acl">ACL</div>
+                <p class="pub-text">Li, J., Du, G., Li, J., Goh, S.K., Wang, W., Wang, Y., Liu, F., Tang, H.K., Alharbi, S., He, D. and Zhang, M., 2025. <strong style="color:var(--text-primary)">Multi-modality Expansion and Retention for LLMs through Parameter Merging and Decoupling.</strong> arXiv:2505.17110.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TEAM ── -->
+    <section id="team">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8">
+                    <div class="section-eyebrow g-yellow">// The People</div>
+                    <h2 class="section-title">Team</h2>
+                    <p class="section-desc">A diverse group of researchers, advisors, and students working at the intersection of AI, neuroscience, and systems engineering.</p>
+                </div>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-role-card featured">
+                    <div class="team-role-label">Point of Contact</div>
+                    <div class="team-members">
+                        <span class="member-chip featured">Sim Kuan GOH</span>
+                    </div>
+                </div>
+
+                <div class="team-role-card">
+                    <div class="team-role-label">Scientific Advisors</div>
+                    <div class="team-members">
+                        <span class="member-chip">Kheng Seang LIM</span>
+                        <span class="member-chip">Silei FONG</span>
+                        <span class="member-chip">Chow Khuen CHAN</span>
+                        <span class="member-chip">Tanka TANG</span>
+                        <span class="member-chip">Vincent WOON</span>
+                    </div>
+                </div>
+
+                <div class="team-role-card">
+                    <div class="team-role-label">Postgraduate Researchers</div>
+                    <div class="team-members">
+                        <span class="member-chip">Jia Hong PUAH</span>
+                        <span class="member-chip">Yuin Torng YEW</span>
+                        <span class="member-chip">Seohyun AHN</span>
+                        <span class="member-chip">Yong Ler LAI</span>
+                    </div>
+                </div>
+
+                <div class="team-role-card">
+                    <div class="team-role-label">Undergraduate Researchers</div>
+                    <div class="team-members">
+                        <span class="member-chip" style="color:var(--text-muted); font-style:italic;">To be announced</span>
+                    </div>
+                </div>
+
+                <div class="team-role-card">
+                    <div class="team-role-label">Alumni</div>
+                    <div class="team-members">
+                        <span class="member-chip" style="color:var(--text-muted); font-style:italic;">To be announced</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PARTNERS / COLLABORATORS ── -->
+    <section id="partners">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-8">
+                    <div class="section-eyebrow g-red">// Global Network</div>
+                    <h2 class="section-title">Collaborators</h2>
+                    <p class="section-desc">We partner with leading universities and medical centres worldwide to advance our research and expand its impact.</p>
+                </div>
+            </div>
+
+            <div class="collab-grid">
+                <div class="collab-card">
+                    <div class="collab-icon"><i class="fas fa-university"></i></div>
+                    <div class="collab-name">Xiamen University Malaysia</div>
+                </div>
+                <div class="collab-card">
+                    <div class="collab-icon"><i class="fas fa-hospital"></i></div>
+                    <div class="collab-name">University Malaya Medical Center</div>
+                </div>
+                <div class="collab-card">
+                    <div class="collab-icon"><i class="fas fa-university"></i></div>
+                    <div class="collab-name">Harbin Institute of Technology</div>
+                </div>
+                <div class="collab-card">
+                    <div class="collab-icon"><i class="fas fa-university"></i></div>
+                    <div class="collab-name">Hong Kong University of Science and Technology</div>
+                </div>
+            </div>
+
+            <div class="contact-note">
+                <i class="fas fa-envelope"></i>
+                <span style="color: var(--text-secondary); font-size: 0.9rem;">
+                    Interested in collaboration? Reach us at
+                    <a href="mailto:simkuangoh@gmail.com">simkuangoh@gmail.com</a>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
     <footer>
         <div class="container">
-            <div class="row">
+            <div class="row align-items-center">
                 <div class="col-md-6">
-                    <span class="copyright">Copyright &copy; AImplifier</span>
+                    <div class="footer-brand">AImplifier R&D</div>
+                    <div class="footer-copy mt-1">Amplifying AI &amp; Its Impacts</div>
                 </div>
-                <!-- <div class="col-md-6">
-                    <ul class="list-inline social-buttons">
-                        <li class="list-inline-item"><a href="https://www.instagram.com/xmum_ai_club?utm_source=ig_web_button_share_sheet&amp;igsh=ZDNlZDc0MzIxNw=="><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div> -->
+                <div class="col-md-6 text-md-end">
+                    <span class="footer-copy">&copy; 2025 AImplifier R&amp;D. All rights reserved.</span>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap & jQuery JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Custom JavaScript -->
+
     <script>
-        // Navbar scroll behavior
-        $(window).scroll(function() {
-            if ($(document).scrollTop() > 100) {
-                $('.navbar').addClass('navbar-shrink');
-            } else {
-                $('.navbar').removeClass('navbar-shrink');
+    // ── NAVBAR SCROLL ──
+    window.addEventListener('scroll', () => {
+        document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    // ── NAV COLLAPSE ON LINK CLICK ──
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const collapse = document.getElementById('navbarResponsive');
+            if (collapse.classList.contains('show')) {
+                collapse.classList.remove('show');
             }
         });
-        
-        // Smooth scrolling for page anchors
-        $(document).on('click', 'a.page-scroll', function(event) {
-            event.preventDefault();
-            $('html, body').animate({
-                scrollTop: $($(this).attr('href')).offset().top - 70
-            }, 800);
-        });
-        
-        // Close responsive menu when a scroll trigger link is clicked
-        $('.nav-link').click(function() {
-            $('.navbar-collapse').collapse('hide');
-        });
+    });
 
-    
-        document.addEventListener('DOMContentLoaded', () => {
-          const container = document.querySelector('.grid4');
+    // ── LOGO GRID ANIMATION ──
+    (function() {
+        const container = document.getElementById('heroGrid');
+        if (!container) return;
 
-          function createGridColors() {
+        const CSS = getComputedStyle(document.documentElement);
+        const colorMap = {
+            red:    CSS.getPropertyValue('--red').trim()    || '#EA4335',
+            green:  CSS.getPropertyValue('--green').trim()  || '#34A853',
+            blue:   CSS.getPropertyValue('--blue').trim()   || '#4285F4',
+            yellow: CSS.getPropertyValue('--yellow').trim() || '#FBBC05',
+            empty:  'transparent',
+        };
+
+        function createGridColors() {
             const colors = [];
-
-            // First 3 rows
-            for (let i = 0; i < 3; i++) {
-              colors.push([
-                ...Array(6).fill('red'),
-                ...Array(2).fill('green'),
-                ...Array(2).fill('empty'),
-                ...Array(2).fill('green')
-              ]);
-            }
-
-            // Next 3 rows
-            for (let i = 0; i < 3; i++) {
-              colors.push([
-                ...Array(3).fill('red'),
-                ...Array(3).fill('empty'),
-                ...Array(2).fill('green'),
-                ...Array(2).fill('empty'),
-                ...Array(2).fill('green')
-              ]);
-            }
-
-            // Next 3 rows
-            for (let i = 0; i < 3; i++) {
-              colors.push([
-                ...Array(6).fill('blue'),
-                ...Array(2).fill('yellow'),
-                ...Array(2).fill('empty'),
-                ...Array(2).fill('yellow')
-              ]);
-            }
-
-            // Last 3 rows
-            for (let i = 0; i < 3; i++) {
-              colors.push([
-                ...Array(3).fill('blue'),
-                ...Array(3).fill('empty'),
-                ...Array(2).fill('yellow'),
-                ...Array(2).fill('empty'),
-                ...Array(2).fill('yellow')
-              ]);
-            }
-
+            for (let i = 0; i < 3; i++) colors.push([...Array(6).fill('red'), ...Array(2).fill('green'), ...Array(2).fill('empty'), ...Array(2).fill('green')]);
+            for (let i = 0; i < 3; i++) colors.push([...Array(3).fill('red'), ...Array(3).fill('empty'), ...Array(2).fill('green'), ...Array(2).fill('empty'), ...Array(2).fill('green')]);
+            for (let i = 0; i < 3; i++) colors.push([...Array(6).fill('blue'), ...Array(2).fill('yellow'), ...Array(2).fill('empty'), ...Array(2).fill('yellow')]);
+            for (let i = 0; i < 3; i++) colors.push([...Array(3).fill('blue'), ...Array(3).fill('empty'), ...Array(2).fill('yellow'), ...Array(2).fill('empty'), ...Array(2).fill('yellow')]);
             return colors;
-          }
+        }
 
-          function playAnimation() {
-            container.innerHTML = ''; // Clear previous cells
+        function playAnimation() {
+            container.innerHTML = '';
             const colors = createGridColors();
-
+            const cells = [];
             for (let row = 0; row < 12; row++) {
-              for (let col = 0; col < 12; col++) {
-                const color = colors[row][col];
-                const cell = document.createElement('div');
-                cell.classList.add('cell', color);
-                container.appendChild(cell);
-
-                const cssVar = `--${color}`;
-                const delay = col * 12 + row;
-
-                setTimeout(() => {
-                  cell.style.backgroundColor = `var(${cssVar})`;
-                }, delay * 3);
-              }
+                cells[row] = [];
+                for (let col = 0; col < 12; col++) {
+                    const cell = document.createElement('div');
+                    cell.className = 'cell';
+                    container.appendChild(cell);
+                    cells[row][col] = { el: cell, color: colors[row][col] };
+                }
             }
-          }
+            const COL_STAGGER  = 80;
+            const CELL_STAGGER = 25;
+            for (let col = 0; col < 12; col++) {
+                for (let row = 0; row < 12; row++) {
+                    const delay = col * COL_STAGGER + row * CELL_STAGGER;
+                    const { el, color } = cells[row][col];
+                    setTimeout(() => { el.style.backgroundColor = colorMap[color]; }, delay);
+                }
+            }
+        }
 
-          // First play
-          playAnimation();
+        playAnimation();
+        setInterval(playAnimation, 6000);
+    })();
 
-          // Replay every 5 seconds
-          setInterval(playAnimation, 5000);
-        });
+    // ── NEURAL NETWORK CANVAS ──
+    (function() {
+        const canvas = document.getElementById('neural-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
 
+        function resize() {
+            canvas.width  = canvas.offsetWidth;
+            canvas.height = canvas.offsetHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+
+        const NODES = 60;
+        const MAX_DIST = 160;
+
+        const nodes = Array.from({ length: NODES }, () => ({
+            x:  Math.random() * canvas.width,
+            y:  Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            r:  Math.random() * 1.8 + 0.8,
+        }));
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Edges
+            for (let i = 0; i < NODES; i++) {
+                for (let j = i + 1; j < NODES; j++) {
+                    const dx = nodes[i].x - nodes[j].x;
+                    const dy = nodes[i].y - nodes[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < MAX_DIST) {
+                        const alpha = (1 - dist / MAX_DIST) * 0.12;
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(37,99,235,${alpha})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.moveTo(nodes[i].x, nodes[i].y);
+                        ctx.lineTo(nodes[j].x, nodes[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // Nodes
+            nodes.forEach(n => {
+                ctx.beginPath();
+                ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(37,99,235,0.3)';
+                ctx.fill();
+
+                n.x += n.vx;
+                n.y += n.vy;
+                if (n.x < 0 || n.x > canvas.width)  n.vx *= -1;
+                if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
+            });
+
+            requestAnimationFrame(draw);
+        }
+
+        draw();
+    })();
     </script>
 </body>
 </html>
