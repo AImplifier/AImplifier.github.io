@@ -392,7 +392,7 @@
     object-fit: cover;
     object-position: 50% 18%;
     display: block;
-    filter: grayscale(0.4) contrast(1.02);
+    filter: none;
   }
   .spk .photo::after {
     content: "";
@@ -622,10 +622,9 @@
 
     /* Speaker photo reveal on hover */
     .spk .photo img {
-      transition: filter 0.4s ease, transform 0.4s ease;
+      transition: transform 0.4s ease;
     }
     .spk:hover .photo img {
-      filter: grayscale(0) contrast(1.06);
       transform: scale(1.03);
     }
 
