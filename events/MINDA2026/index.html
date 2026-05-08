@@ -770,7 +770,10 @@
       gap: 12px;
     }
     .spk .photo {
-      aspect-ratio: 4 / 3;          /* wider on mobile, saves vertical space */
+      aspect-ratio: 1 / 1;
+    }
+    .spk .photo img {
+      object-position: 50% 25%;     /* show more of the face on square crop */
     }
     .spk .name { font-size: 18px; }
     .spk .aff  { font-size: 12px; }
