@@ -7,9 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 <style>
   :root {
     --ink: #0b1623;
@@ -23,7 +20,7 @@
     --accent-2: #d6ff52;     /* electric chartreuse */
     --muted: color-mix(in oklab, #f3ece1 62%, transparent);
     --muted-2: color-mix(in oklab, #f3ece1 78%, transparent);
-    --w: 820px;
+    --w: 790px;
     --h: 1160px;
   }
   * { box-sizing: border-box; }
@@ -241,14 +238,14 @@
     color: var(--accent);
   }
   .subtitle {
-    margin: 28px 0 0;
+    margin: 18px 0 0;
     font-family: 'Newsreader', serif;
     font-style: italic;
     font-weight: 400;
-    font-size: 20px;
-    line-height: 1.4;
+    font-size: 32px;
+    line-height: 1.25;
     color: var(--muted-2);
-    max-width: 600px;
+    max-width: 100%;
     text-wrap: pretty;
   }
 
@@ -728,16 +725,15 @@
       padding: 5px 10px 5px 8px;
     }
     h1.title {
-      font-size: 34px !important;   /* override JS inline style */
-      line-height: 1.05;
+      font-size: clamp(20px, 5.5vw, 26px) !important;
+      line-height: 1.08;
       letter-spacing: -0.015em;
     }
+    h1.title br { display: none; }
+    h1.title .nowrap { white-space: nowrap; }
     .subtitle {
-      width: auto !important;       /* override inline width: 800px */
-      max-width: 100% !important;
-      height: auto !important;      /* override inline height: 82.5px */
-      font-size: 20px !important;
-      margin: 14px 0 0 !important;
+      font-size: 18px !important;
+      margin: 12px 0 0 !important;
       line-height: 1.3 !important;
     }
 
@@ -807,13 +803,10 @@
       width: auto !important;
     }
     h1.title {
-      font-size: 48px !important;
+      font-size: clamp(36px, 6vw, 52px) !important;
     }
     .subtitle {
-      width: auto !important;
-      max-width: 100% !important;
-      height: auto !important;
-      font-size: 24px !important;
+      font-size: 22px !important;
       margin: 16px 0 0 !important;
     }
     .spk-grid {
@@ -850,7 +843,7 @@
     </header>
 
     <!-- ============ HERO ============ -->
-    <section class="hero" style="width: 790px">
+    <section class="hero">
       <div class="eyebrow">
         <span class="dot"></span>
         <span>MINDA 2026</span>
@@ -865,10 +858,10 @@
 
       <h1 class="title">
         Machine&nbsp;Intelligence<br/>
-        Meets <em>NeuroTechnology</em>
+        <span class="nowrap">Meets <em>NeuroTechnology</em></span>
       </h1>
 
-      <p class="subtitle" style="width: 800px; font-weight: 400; margin: 18px 1px 0px 0px; line-height: 1.25; height: 82.5px; font-size: 32px">From Decoding to Applications (MINDA 2026)</p>
+      <p class="subtitle">From Decoding to Applications (MINDA 2026)</p>
 
       <!-- EEG waveform motif -->
       <div class="wave" aria-hidden="true">
@@ -1042,121 +1035,5 @@
   </article>
 </div>
 
-<div id="tweaks-root"></div>
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-<script type="text/babel">
-  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "width": 790,
-    "accent": "#ff8a5b",
-    "palette": [
-      "#0b1623",
-      "#f3ece1"
-    ],
-    "titleSize": 71,
-    "showWave": true,
-    "showRegMarks": true
-  }/*EDITMODE-END*/;
-
-  const PALETTES = [
-    ["#0b1623", "#f3ece1"],   // ink + paper (default)
-    ["#1a1410", "#f5e6d3"],   // espresso + cream
-    ["#0a1f1a", "#e8efe6"],   // forest + mint
-    ["#1c1530", "#ece8f7"],   // aubergine + lavender
-    ["#f3ece1", "#0b1623"]    // light mode (paper bg, ink fg)
-  ];
-
-  const ACCENTS = ["#d6ff52", "#ff8a5b", "#7cd6ff", "#ffd152"];
-
-  function App() {
-    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-    React.useEffect(() => {
-      const root = document.documentElement;
-      root.style.setProperty('--w', t.width + 'px');
-      root.style.setProperty('--accent', t.accent);
-      const [bg, fg] = t.palette;
-      root.style.setProperty('--ink', bg);
-      // derive ink-2/ink-3 by slight lightening — using color-mix
-      root.style.setProperty('--ink-2', `color-mix(in oklab, ${bg} 88%, ${fg} 12%)`);
-      root.style.setProperty('--ink-3', `color-mix(in oklab, ${bg} 78%, ${fg} 22%)`);
-      root.style.setProperty('--paper', fg);
-      root.style.setProperty('--paper-2', `color-mix(in oklab, ${fg} 92%, ${bg} 8%)`);
-      root.style.setProperty('--rule', `color-mix(in oklab, ${fg} 18%, transparent)`);
-      root.style.setProperty('--rule-strong', `color-mix(in oklab, ${fg} 42%, transparent)`);
-      root.style.setProperty('--muted', `color-mix(in oklab, ${fg} 62%, transparent)`);
-      root.style.setProperty('--muted-2', `color-mix(in oklab, ${fg} 78%, transparent)`);
-
-      const titleEl = document.querySelector('h1.title');
-      if (titleEl) titleEl.style.fontSize = t.titleSize + 'px';
-
-      const wave = document.querySelector('.wave');
-      if (wave) wave.style.display = t.showWave ? '' : 'none';
-
-      document.querySelectorAll('.reg').forEach(el => {
-        el.style.display = t.showRegMarks ? '' : 'none';
-      });
-    }, [t]);
-
-    return (
-      <TweaksPanel title="Tweaks">
-        <TweakSection label="Layout">
-          <TweakSlider
-            label="Poster width"
-            value={t.width}
-            min={720} max={1280} step={10}
-            unit="px"
-            onChange={v => setTweak('width', v)}
-          />
-          <TweakSlider
-            label="Title size"
-            value={t.titleSize}
-            min={44} max={92} step={1}
-            unit="px"
-            onChange={v => setTweak('titleSize', v)}
-          />
-        </TweakSection>
-
-        <TweakSection label="Color">
-          <TweakColor
-            label="Palette"
-            value={t.palette}
-            options={PALETTES}
-            onChange={v => setTweak('palette', v)}
-          />
-          <TweakColor
-            label="Accent"
-            value={t.accent}
-            options={ACCENTS}
-            onChange={v => setTweak('accent', v)}
-          />
-        </TweakSection>
-
-        <TweakSection label="Details">
-          <TweakToggle
-            label="EEG waveform motif"
-            value={t.showWave}
-            onChange={v => setTweak('showWave', v)}
-          />
-          <TweakToggle
-            label="Corner registration marks"
-            value={t.showRegMarks}
-            onChange={v => setTweak('showRegMarks', v)}
-          />
-        </TweakSection>
-      </TweaksPanel>
-    );
-  }
-
-  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
-</script>
-<script>
-// (async () => {
-//   if (document.fonts && document.fonts.ready) {
-//     try { await document.fonts.ready; } catch (e) {}
-//   }
-//   await new Promise(r => setTimeout(r, 600));
-//   window.print();
-// })();
-</script>
 </body>
 </html>
