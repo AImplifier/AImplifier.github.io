@@ -552,6 +552,130 @@
     vertical-align: middle;
     color: var(--accent);
   }
+
+  /* ====== Screen-only animations (hidden from print) ====== */
+  @media screen {
+    /* Poster entrance */
+    .poster {
+      animation: posterIn 0.85s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes posterIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.99); }
+      to   { opacity: 1; transform: translateY(0)    scale(1);    }
+    }
+
+    /* EEG waveform continuous scroll */
+    #eeg-group {
+      animation: eegScroll 7s linear infinite;
+    }
+    @keyframes eegScroll {
+      from { transform: translateX(0px);    }
+      to   { transform: translateX(-820px); }
+    }
+
+    /* Info cells slide up */
+    .info .cell:nth-child(1) { animation: fadeUp 0.55s ease both 0.35s; }
+    .info .cell:nth-child(2) { animation: fadeUp 0.55s ease both 0.48s; }
+    .info .cell:nth-child(3) { animation: fadeUp 0.55s ease both 0.61s; }
+
+    /* Feature items stagger */
+    .feat:nth-child(1) { animation: fadeUp 0.5s ease both 0.55s; }
+    .feat:nth-child(2) { animation: fadeUp 0.5s ease both 0.65s; }
+    .feat:nth-child(3) { animation: fadeUp 0.5s ease both 0.75s; }
+    .feat:nth-child(4) { animation: fadeUp 0.5s ease both 0.85s; }
+
+    /* Speaker cards stagger */
+    .spk:nth-child(1) { animation: fadeUp 0.6s ease both 0.70s; }
+    .spk:nth-child(2) { animation: fadeUp 0.6s ease both 0.85s; }
+    .spk:nth-child(3) { animation: fadeUp 0.6s ease both 1.00s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0);    }
+    }
+
+    /* Accent scanning line across hero */
+    .hero::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent) 40%, var(--accent) 60%, transparent 100%);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 5;
+      animation: scanLine 6s ease-in-out 1.2s infinite;
+    }
+    @keyframes scanLine {
+      0%   { top: 0%;   opacity: 0;   }
+      5%   { opacity: 0.45; }
+      90%  { opacity: 0.45; }
+      100% { top: 100%; opacity: 0;   }
+    }
+
+    /* Feature hover */
+    .feat {
+      transition: background 0.25s ease, transform 0.2s ease;
+    }
+    .feat:hover {
+      background: color-mix(in oklab, var(--ink) 80%, var(--paper) 20%);
+      transform: translateX(3px);
+    }
+
+    /* Speaker photo reveal on hover */
+    .spk .photo img {
+      transition: filter 0.4s ease, transform 0.4s ease;
+    }
+    .spk:hover .photo img {
+      filter: grayscale(0) contrast(1.06);
+      transform: scale(1.03);
+    }
+
+    /* Speaker card subtle border glow on hover */
+    .spk {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .spk:hover {
+      border-color: color-mix(in oklab, var(--accent) 40%, transparent);
+      box-shadow: 0 0 18px -6px color-mix(in oklab, var(--accent) 30%, transparent);
+    }
+
+    /* Registration link glow pulse */
+    a.pill.reg-link {
+      animation: regGlow 3s ease-in-out infinite;
+    }
+    @keyframes regGlow {
+      0%, 100% { box-shadow: 0 4px 14px -4px color-mix(in oklab, var(--accent) 60%, transparent); }
+      50%       { box-shadow: 0 6px 24px  2px color-mix(in oklab, var(--accent) 75%, transparent); }
+    }
+
+    /* Eyebrow dot pulse ring */
+    .eyebrow .dot {
+      position: relative;
+    }
+    .eyebrow .dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0;
+      animation: dotRing 2.4s ease-out infinite;
+    }
+    @keyframes dotRing {
+      0%   { transform: scale(1);   opacity: 0.55; }
+      100% { transform: scale(2.8); opacity: 0;    }
+    }
+
+    /* QR code subtle hover */
+    .cta .qr {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .cta .qr:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px -4px color-mix(in oklab, var(--accent) 40%, transparent);
+    }
+  }
 </style>
 </head>
 <body>
@@ -579,7 +703,7 @@
         <span class="dot"></span>
         <span>MINDA 2026</span>
         <span class="sep">/</span>
-        <span>WORKSHOP</span>
+        <span>NeuroTech WORKSHOP</span>
         <a class="pill reg-link" href="https://docs.google.com/forms/d/e/1FAIpQLSeSZCDYlkBxwhbRiQBZKWiVlq2EUKAIZ4homF27DIyxyIGBIw/viewform" target="_blank" rel="noopener">
           <span class="pdot"></span>
           <span>Registration open</span>
@@ -592,37 +716,47 @@
         Meets <em>Neuro&shy;technology</em>
       </h1>
 
-      <p class="subtitle" style="width: 800px; font-weight: 400; margin: 18px 1px 0px 0px; line-height: 1.25; height: 82.5px; font-size: 33px">From Decoding to Applications (MINDA 2026)</p>
+      <p class="subtitle" style="width: 800px; font-weight: 400; margin: 18px 1px 0px 0px; line-height: 1.25; height: 82.5px; font-size: 32px">From Decoding to Applications (MINDA 2026)</p>
 
       <!-- EEG waveform motif -->
       <div class="wave" aria-hidden="true">
-        <svg viewBox="0 0 820 56" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="wgrad" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0%" stop-color="#d6ff52" stop-opacity="0"/>
-              <stop offset="15%" stop-color="#d6ff52" stop-opacity="0.9"/>
-              <stop offset="85%" stop-color="#d6ff52" stop-opacity="0.9"/>
-              <stop offset="100%" stop-color="#d6ff52" stop-opacity="0"/>
-            </linearGradient>
-          </defs>
+        <svg viewBox="0 0 820 56" preserveAspectRatio="none" style="overflow:hidden">
           <!-- baseline -->
           <line x1="0" y1="40" x2="820" y2="40" stroke="rgba(243,236,225,0.12)" stroke-width="1"/>
-          <!-- EEG signal -->
-          <path d="M0 40 L60 40 L70 38 L80 42 L92 40 L120 40
-                   L130 26 L138 50 L146 14 L154 48 L162 40
-                   L210 40 L222 36 L232 44 L244 40
-                   L290 40 L300 22 L308 56 L316 18 L324 50 L332 40
-                   L400 40 L412 32 L424 48 L436 40
-                   L500 40 L512 18 L520 54 L528 14 L538 50 L548 40
-                   L620 40 L632 34 L644 46 L656 40
-                   L720 40 L730 24 L740 52 L750 20 L758 48 L768 40
-                   L820 40"
-                fill="none" stroke="url(#wgrad)" stroke-width="1.4"
-                stroke-linejoin="round" stroke-linecap="round"/>
-          <!-- secondary thinner trace -->
-          <path d="M0 44 Q60 44 80 42 T160 44 T240 42 T320 45 T400 43
-                   T480 44 T560 42 T640 44 T720 43 T820 44"
-                fill="none" stroke="rgba(243,236,225,0.18)" stroke-width="0.7"/>
+          <!-- EEG signal: two copies for seamless loop -->
+          <g id="eeg-group">
+            <path d="M0 40 L60 40 L70 38 L80 42 L92 40 L120 40
+                     L130 26 L138 50 L146 14 L154 48 L162 40
+                     L210 40 L222 36 L232 44 L244 40
+                     L290 40 L300 22 L308 56 L316 18 L324 50 L332 40
+                     L400 40 L412 32 L424 48 L436 40
+                     L500 40 L512 18 L520 54 L528 14 L538 50 L548 40
+                     L620 40 L632 34 L644 46 L656 40
+                     L720 40 L730 24 L740 52 L750 20 L758 48 L768 40
+                     L820 40"
+                  fill="none" stroke="#d6ff52" stroke-opacity="0.85" stroke-width="1.4"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M0 44 Q60 44 80 42 T160 44 T240 42 T320 45 T400 43
+                     T480 44 T560 42 T640 44 T720 43 T820 44"
+                  fill="none" stroke="rgba(243,236,225,0.18)" stroke-width="0.7"/>
+            <!-- copy 2: offset 820 units right for seamless loop -->
+            <path transform="translate(820,0)"
+                  d="M0 40 L60 40 L70 38 L80 42 L92 40 L120 40
+                     L130 26 L138 50 L146 14 L154 48 L162 40
+                     L210 40 L222 36 L232 44 L244 40
+                     L290 40 L300 22 L308 56 L316 18 L324 50 L332 40
+                     L400 40 L412 32 L424 48 L436 40
+                     L500 40 L512 18 L520 54 L528 14 L538 50 L548 40
+                     L620 40 L632 34 L644 46 L656 40
+                     L720 40 L730 24 L740 52 L750 20 L758 48 L768 40
+                     L820 40"
+                  fill="none" stroke="#d6ff52" stroke-opacity="0.85" stroke-width="1.4"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <path transform="translate(820,0)"
+                  d="M0 44 Q60 44 80 42 T160 44 T240 42 T320 45 T400 43
+                     T480 44 T560 42 T640 44 T720 43 T820 44"
+                  fill="none" stroke="rgba(243,236,225,0.18)" stroke-width="0.7"/>
+          </g>
         </svg>
       </div>
     </section>
@@ -864,13 +998,13 @@
   ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
 </script>
 <script>
-(async () => {
-  if (document.fonts && document.fonts.ready) {
-    try { await document.fonts.ready; } catch (e) {}
-  }
-  await new Promise(r => setTimeout(r, 600));
-  window.print();
-})();
+// (async () => {
+//   if (document.fonts && document.fonts.ready) {
+//     try { await document.fonts.ready; } catch (e) {}
+//   }
+//   await new Promise(r => setTimeout(r, 600));
+//   window.print();
+// })();
 </script>
 </body>
 </html>
