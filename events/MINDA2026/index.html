@@ -1,0 +1,876 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>MINDA 2026 — Machine Intelligence Meets Neurotechnology</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --ink: #0b1623;
+    --ink-2: #142233;
+    --ink-3: #1d2e44;
+    --paper: #f3ece1;
+    --paper-2: #ebe2d4;
+    --rule: rgba(243, 236, 225, 0.18);
+    --rule-strong: rgba(243, 236, 225, 0.42);
+    --accent: #d6ff52;       /* electric chartreuse */
+    --accent-2: #ff8a5b;     /* warm coral */
+    --muted: rgba(243, 236, 225, 0.62);
+    --muted-2: rgba(243, 236, 225, 0.78);
+    --w: 820px;
+    --h: 1160px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Geist', system-ui, sans-serif;
+    background: #1a1a1a;
+    color: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .stage {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px 16px 48px;
+    background:
+      radial-gradient(1200px 600px at 50% -200px, #2a2a2a 0%, #1a1a1a 60%, #0e0e0e 100%);
+  }
+
+  @page {
+    size: 820px 1160px;
+    margin: 0;
+  }
+  @media print {
+    html, body {
+      background: var(--ink) !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .stage {
+      min-height: 0 !important;
+      padding: 0 !important;
+      background: var(--ink) !important;
+      display: block !important;
+    }
+    .poster {
+      width: 820px !important;
+      min-height: 1160px !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    .twk-panel, [data-noncommentable] { display: none !important; }
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+  }
+  .poster {
+    width: var(--w);
+    min-height: var(--h);
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.7), 0 30px 60px -30px rgba(0,0,0,0.5);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Subtle paper grain texture across the whole poster */
+  .poster::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(214,255,82,0.05), transparent 35%),
+      radial-gradient(circle at 90% 70%, rgba(255,138,91,0.06), transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .poster::after {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0 1px, transparent 1px 3px);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* ====== Top sponsor strip ====== */
+  .topbar {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    padding: 14px 28px 12px;
+    border-bottom: 1px solid var(--rule);
+    gap: 24px;
+  }
+  .topbar .label {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar .logos {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    justify-content: flex-end;
+  }
+  .topbar .logos img {
+    display: block;
+    object-fit: contain;
+    background: #fff;
+    padding: 4px 6px;
+    border-radius: 4px;
+  }
+  .topbar .logos .xmum   { height: 26px; }
+  .topbar .logos .minds  { height: 30px; border-radius: 50%; padding: 0; background: transparent; }
+  .topbar .logos .dan    { height: 24px; }
+  .topbar .logos .div {
+    width: 1px; height: 22px;
+    background: var(--rule-strong);
+  }
+  .topbar .meta {
+    text-align: right;
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .topbar .meta b { color: var(--paper); font-weight: 500; }
+
+  /* ====== Hero ====== */
+  .hero {
+    position: relative;
+    z-index: 2;
+    padding: 36px 44px 32px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 26px;
+  }
+  .eyebrow .dot {
+    width: 8px; height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(214,255,82,0.15);
+  }
+  .eyebrow .sep { color: var(--muted); }
+  .eyebrow .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid var(--rule-strong);
+    color: var(--paper);
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+  .eyebrow .pill .pdot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 25%, transparent);
+    animation: pulse 1.6s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0   color-mix(in oklab, var(--accent) 50%, transparent); }
+    70%  { box-shadow: 0 0 0 8px color-mix(in oklab, var(--accent) 0%,  transparent); }
+    100% { box-shadow: 0 0 0 0   color-mix(in oklab, var(--accent) 0%,  transparent); }
+  }
+  a.pill.reg-link {
+    text-decoration: none;
+    background: var(--accent);
+    color: var(--ink);
+    border-color: var(--accent);
+    font-weight: 600;
+    padding: 5px 12px 5px 10px;
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow: 0 4px 14px -4px color-mix(in oklab, var(--accent) 60%, transparent);
+  }
+  a.pill.reg-link .pdot {
+    background: var(--ink);
+    box-shadow: none;
+    animation: none;
+  }
+  a.pill.reg-link .arr {
+    margin-left: 4px;
+    opacity: 0.78;
+    font-weight: 500;
+  }
+  a.pill.reg-link:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px -4px color-mix(in oklab, var(--accent) 70%, transparent);
+  }
+
+  h1.title {
+    margin: 0;
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: 64px;
+    line-height: 1.02;
+    letter-spacing: -0.022em;
+    color: var(--paper);
+  }
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--accent);
+  }
+  .subtitle {
+    margin: 28px 0 0;
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.4;
+    color: var(--muted-2);
+    max-width: 600px;
+    text-wrap: pretty;
+  }
+
+  /* EEG waveform motif */
+  .wave {
+    position: absolute;
+    left: 0; right: 0;
+    bottom: -6px;
+    height: 56px;
+    pointer-events: none;
+    opacity: 0.85;
+  }
+  .wave svg { width: 100%; height: 100%; display: block; }
+
+  /* ====== Info row ====== */
+  .info {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+  .info .cell {
+    padding: 16px 24px 18px;
+    border-right: 1px solid var(--rule);
+  }
+  .info .cell:last-child { border-right: 0; }
+  .info .k {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .info .k .sq { width: 6px; height: 6px; background: var(--accent); }
+  .info .v {
+    font-family: 'Newsreader', serif;
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--paper);
+    line-height: 1.2;
+  }
+  .info .vsmall {
+    font-family: 'Geist', sans-serif;
+    font-size: 12px;
+    color: var(--muted-2);
+    margin-top: 4px;
+    letter-spacing: 0.01em;
+  }
+
+  /* ====== Features ====== */
+  .features {
+    position: relative;
+    z-index: 2;
+    padding: 22px 44px 18px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .section-head .h {
+    font-family: 'Newsreader', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--paper);
+  }
+  .section-head .n {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .feat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+  }
+  .feat {
+    background: var(--ink);
+    padding: 12px 14px 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .feat .num {
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    margin-top: 4px;
+    letter-spacing: 0.1em;
+  }
+  .feat .body .t {
+    font-family: 'Geist', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--paper);
+    letter-spacing: -0.005em;
+  }
+  .feat .body .d {
+    font-family: 'Geist', sans-serif;
+    font-size: 11.5px;
+    color: var(--muted-2);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  /* ====== Speakers ====== */
+  .speakers {
+    position: relative;
+    z-index: 2;
+    padding: 22px 44px 22px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .spk-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+  .spk {
+    position: relative;
+    background: linear-gradient(180deg, var(--ink-2), var(--ink));
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 14px 14px 14px;
+    overflow: hidden;
+  }
+  .spk .photo {
+    position: relative;
+    aspect-ratio: 1 / 1.05;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .spk .photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: 50% 18%;
+    display: block;
+    filter: grayscale(0.4) contrast(1.02);
+  }
+  .spk .photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(11,22,35,0.55) 100%);
+  }
+  .spk .num {
+    position: absolute;
+    top: 10px; left: 12px;
+    font-family: 'Geist Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    color: var(--accent);
+    z-index: 2;
+  }
+  .spk .meta {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .spk .name {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: 19px;
+    line-height: 1.1;
+    color: var(--paper);
+    letter-spacing: -0.005em;
+  }
+  .spk .aff {
+    font-family: 'Geist', sans-serif;
+    font-size: 11.5px;
+    color: var(--muted-2);
+    margin-top: 6px;
+    line-height: 1.35;
+  }
+  .spk .aff em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  /* ====== Footer with hosts + CTA + QR ====== */
+  .footer {
+    position: relative;
+    z-index: 2;
+    padding: 26px 44px 44px;
+    display: grid;
+    grid-template-columns: 1.2fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+  .hosts .k {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .hosts ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .hosts li {
+    font-family: 'Newsreader', serif;
+    font-size: 16px;
+    color: var(--paper);
+    line-height: 1.35;
+  }
+  .hosts li span {
+    font-family: 'Geist', sans-serif;
+    font-style: normal;
+    font-size: 11px;
+    color: var(--muted-2);
+    letter-spacing: 0.04em;
+    margin-left: 6px;
+  }
+  .vrule {
+    width: 1px;
+    align-self: stretch;
+    background: var(--rule);
+    margin: 4px 0;
+  }
+  .cta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .cta .qr {
+    width: 86px; height: 86px;
+    background: var(--paper);
+    border-radius: 4px;
+    padding: 5px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .cta .qr img { width: 100%; height: 100%; display: block; }
+  .cta .ctxt .k {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .cta .ctxt .t {
+    font-family: 'Newsreader', serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 1.05;
+    color: var(--paper);
+    letter-spacing: -0.01em;
+  }
+  .cta .ctxt .d {
+    font-family: 'Geist Mono', monospace;
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-top: 8px;
+    word-break: break-all;
+    max-width: 220px;
+    line-height: 1.4;
+  }
+
+  /* Bottom marker line */
+  .marker {
+    position: absolute;
+    left: 44px; right: 44px;
+    bottom: 18px;
+    display: flex; justify-content: space-between;
+    font-family: 'Geist Mono', monospace;
+    font-size: 8.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    z-index: 3;
+  }
+  .marker .l { color: var(--accent); }
+
+  /* Corner registration marks */
+  .reg {
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 1px solid var(--rule-strong);
+    z-index: 3;
+  }
+  .reg.tl { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+  .reg.tr { top: 8px; right: 8px; border-left: 0; border-bottom: 0; }
+  .reg.bl { bottom: 8px; left: 8px; border-right: 0; border-top: 0; }
+  .reg.br { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+
+  /* Brain icon mark inline */
+  .brain-mark {
+    width: 14px; height: 14px;
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <article class="poster" data-screen-label="01 Poster">
+
+    <div class="reg tl"></div><div class="reg tr"></div>
+    <div class="reg bl"></div><div class="reg br"></div>
+
+    <!-- ============ TOP SPONSOR STRIP ============ -->
+    <header class="topbar">
+      <div class="label" style="color: rgb(252, 252, 252); font-size: 14px">Proudly presented by</div>
+      <div class="logos">
+        <img class="xmum" src="assets/xmum.png" alt="Xiamen University Malaysia" style="width: 250px; height: 52px" />
+        <span class="div"></span>
+        <img class="minds" src="assets/minds.png" alt="XMUM AI Club (MINDS)" style="opacity: 1; width: 60px; height: 60px; object-fit: cover" />
+        <span class="div"></span>
+        <img class="dan" src="assets/danmedik.png" alt="Danmedik" style="width: 94px; height: 48px; object-fit: cover" />
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" style="width: 790px">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        <span>MINDA 2026</span>
+        <span class="sep">/</span>
+        <span>WORKSHOP</span>
+        <a class="pill reg-link" href="https://docs.google.com/forms/d/e/1FAIpQLSeSZCDYlkBxwhbRiQBZKWiVlq2EUKAIZ4homF27DIyxyIGBIw/viewform" target="_blank" rel="noopener">
+          <span class="pdot"></span>
+          <span>Registration open</span>
+          <span class="arr">— Click to register →</span>
+        </a>
+      </div>
+
+      <h1 class="title">
+        Machine&nbsp;Intelligence<br/>
+        Meets <em>Neuro&shy;technology</em>
+      </h1>
+
+      <p class="subtitle" style="width: 800px; font-weight: 400; margin: 18px 1px 0px 0px; line-height: 1.25; height: 82.5px; font-size: 33px">From Decoding to Applications (MINDA 2026)</p>
+
+      <!-- EEG waveform motif -->
+      <div class="wave" aria-hidden="true">
+        <svg viewBox="0 0 820 56" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="wgrad" x1="0" x2="1" y1="0" y2="0">
+              <stop offset="0%" stop-color="#d6ff52" stop-opacity="0"/>
+              <stop offset="15%" stop-color="#d6ff52" stop-opacity="0.9"/>
+              <stop offset="85%" stop-color="#d6ff52" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#d6ff52" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- baseline -->
+          <line x1="0" y1="40" x2="820" y2="40" stroke="rgba(243,236,225,0.12)" stroke-width="1"/>
+          <!-- EEG signal -->
+          <path d="M0 40 L60 40 L70 38 L80 42 L92 40 L120 40
+                   L130 26 L138 50 L146 14 L154 48 L162 40
+                   L210 40 L222 36 L232 44 L244 40
+                   L290 40 L300 22 L308 56 L316 18 L324 50 L332 40
+                   L400 40 L412 32 L424 48 L436 40
+                   L500 40 L512 18 L520 54 L528 14 L538 50 L548 40
+                   L620 40 L632 34 L644 46 L656 40
+                   L720 40 L730 24 L740 52 L750 20 L758 48 L768 40
+                   L820 40"
+                fill="none" stroke="url(#wgrad)" stroke-width="1.4"
+                stroke-linejoin="round" stroke-linecap="round"/>
+          <!-- secondary thinner trace -->
+          <path d="M0 44 Q60 44 80 42 T160 44 T240 42 T320 45 T400 43
+                   T480 44 T560 42 T640 44 T720 43 T820 44"
+                fill="none" stroke="rgba(243,236,225,0.18)" stroke-width="0.7"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============ INFO ROW ============ -->
+    <section class="info">
+      <div class="cell">
+        <div class="k"><span class="sq"></span> Date</div>
+        <div class="v">15 May 2026</div>
+        <div class="vsmall">Friday</div>
+      </div>
+      <div class="cell">
+        <div class="k"><span class="sq"></span> Time</div>
+        <div class="v">13:00 — 18:00 <span style="color: var(--muted); font-size: 14px;">MYT</span></div>
+        <div class="vsmall">Registration from 1:00PM</div>
+      </div>
+      <div class="cell">
+        <div class="k"><span class="sq"></span> Venue</div>
+        <div class="v">Block A3, Room #618</div>
+        <div class="vsmall">Xiamen University Malaysia</div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURES ============ -->
+    <section class="features">
+      <div class="section-head">
+        <div class="h">What to expect</div>
+        <div class="n">
+</div>
+      </div>
+      <div class="feat-grid">
+        <div class="feat">
+          <div class="num">01</div>
+          <div class="body">
+            <div class="t">Inspiring invited talks</div>
+            <div class="d">Three talks spanning clinical neurology, epileptology, EEG, and applied neuroscience.</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="num">02</div>
+          <div class="body">
+            <div class="t">Interactive live demonstrations</div>
+            <div class="d">EEG hardware and software capturing and decoding brain signals.</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="num">03</div>
+          <div class="body">
+            <div class="t">Innovative project showcases</div>
+            <div class="d">Student and faculty projects pushing the BCI &amp; ML frontier.</div>
+          </div>
+        </div>
+        <div class="feat">
+          <div class="num">04</div>
+          <div class="body">
+            <div class="t">Hands-on EEG processing</div>
+            <div class="d">Bring a laptop, work through a full pipeline from raw EEG signal to insight.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPEAKERS ============ -->
+    <section class="speakers">
+      <div class="section-head">
+        <div class="h">Invited speakers</div>
+        <div class="n">03 voices</div>
+      </div>
+      <div class="spk-grid">
+        <div class="spk">
+          <span class="num">
+</span>
+          <div class="photo"><img src="assets/tan-hui-jan.png" alt="Prof. Dr. Tan Hui Jan" /></div>
+          <div class="meta" style="height: 0px">
+</div>
+          <div class="name">Prof. Dr. Tan Hui Jan</div>
+          <div class="aff">Universiti Kebangsaan Malaysia <em></em></div>
+        </div>
+        <div class="spk">
+          <span class="num">
+</span>
+          <div class="photo"><img src="assets/fong-si-lei.png" alt="Assoc. Prof. Dr. Fong Si Lei" /></div>
+          <div class="meta" style="height: 0px">
+</div>
+          <div class="name">A/Prof. Dr. Fong Si Lei</div>
+          <div class="aff">Universiti Malaya <em></em></div>
+        </div>
+        <div class="spk">
+          <span class="num">
+</span>
+          <div class="photo"><img src="assets/shiw-shin-yeen.png" alt="Dr. Shiw Shin Yeen" /></div>
+          <div class="meta" style="height: 0px">
+</div>
+          <div class="name">Dr. Shiw Shin Yeen</div>
+          <div class="aff">BrainScience Academy <em></em></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER: HOSTS + CTA ============ -->
+    <section class="footer">
+      <div class="hosts">
+        <div class="k">Hosted by</div>
+        <ul>
+          <li>Sim Kuan Goh <span>— XMUM</span></li>
+          <li>Daniel Chan <span>— Danmedik</span></li>
+        </ul>
+      </div>
+      <div class="vrule"></div>
+      <div class="cta">
+        <div class="qr">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSeSZCDYlkBxwhbRiQBZKWiVlq2EUKAIZ4homF27DIyxyIGBIw%2Fviewform" alt="Register QR" />
+        </div>
+        <div class="ctxt">
+          <div class="k">→ Register now</div>
+          <div class="t">Scan to secure a seat</div>
+          <div class="d">docs.google.com/forms/d/e/1FAIpQLSeSZCDYlkBxwhbRiQBZKWiVlq2EUKAIZ4homF27DIyxyIGBIw/viewform</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marker">
+      <span class="l">
+</span>
+      <span>
+</span>
+      <span>
+</span>
+    </div>
+
+  </article>
+</div>
+
+<div id="tweaks-root"></div>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "width": 790,
+    "accent": "#ff8a5b",
+    "palette": [
+      "#0b1623",
+      "#f3ece1"
+    ],
+    "titleSize": 71,
+    "showWave": true,
+    "showRegMarks": true
+  }/*EDITMODE-END*/;
+
+  const PALETTES = [
+    ["#0b1623", "#f3ece1"],   // ink + paper (default)
+    ["#1a1410", "#f5e6d3"],   // espresso + cream
+    ["#0a1f1a", "#e8efe6"],   // forest + mint
+    ["#1c1530", "#ece8f7"],   // aubergine + lavender
+    ["#f3ece1", "#0b1623"]    // light mode (paper bg, ink fg)
+  ];
+
+  const ACCENTS = ["#d6ff52", "#ff8a5b", "#7cd6ff", "#ffd152"];
+
+  function App() {
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    React.useEffect(() => {
+      const root = document.documentElement;
+      root.style.setProperty('--w', t.width + 'px');
+      root.style.setProperty('--accent', t.accent);
+      const [bg, fg] = t.palette;
+      root.style.setProperty('--ink', bg);
+      // derive ink-2/ink-3 by slight lightening — using color-mix
+      root.style.setProperty('--ink-2', `color-mix(in oklab, ${bg} 88%, ${fg} 12%)`);
+      root.style.setProperty('--ink-3', `color-mix(in oklab, ${bg} 78%, ${fg} 22%)`);
+      root.style.setProperty('--paper', fg);
+      root.style.setProperty('--paper-2', `color-mix(in oklab, ${fg} 92%, ${bg} 8%)`);
+      root.style.setProperty('--rule', `color-mix(in oklab, ${fg} 18%, transparent)`);
+      root.style.setProperty('--rule-strong', `color-mix(in oklab, ${fg} 42%, transparent)`);
+      root.style.setProperty('--muted', `color-mix(in oklab, ${fg} 62%, transparent)`);
+      root.style.setProperty('--muted-2', `color-mix(in oklab, ${fg} 78%, transparent)`);
+
+      const titleEl = document.querySelector('h1.title');
+      if (titleEl) titleEl.style.fontSize = t.titleSize + 'px';
+
+      const wave = document.querySelector('.wave');
+      if (wave) wave.style.display = t.showWave ? '' : 'none';
+
+      document.querySelectorAll('.reg').forEach(el => {
+        el.style.display = t.showRegMarks ? '' : 'none';
+      });
+    }, [t]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Layout">
+          <TweakSlider
+            label="Poster width"
+            value={t.width}
+            min={720} max={1280} step={10}
+            unit="px"
+            onChange={v => setTweak('width', v)}
+          />
+          <TweakSlider
+            label="Title size"
+            value={t.titleSize}
+            min={44} max={92} step={1}
+            unit="px"
+            onChange={v => setTweak('titleSize', v)}
+          />
+        </TweakSection>
+
+        <TweakSection label="Color">
+          <TweakColor
+            label="Palette"
+            value={t.palette}
+            options={PALETTES}
+            onChange={v => setTweak('palette', v)}
+          />
+          <TweakColor
+            label="Accent"
+            value={t.accent}
+            options={ACCENTS}
+            onChange={v => setTweak('accent', v)}
+          />
+        </TweakSection>
+
+        <TweakSection label="Details">
+          <TweakToggle
+            label="EEG waveform motif"
+            value={t.showWave}
+            onChange={v => setTweak('showWave', v)}
+          />
+          <TweakToggle
+            label="Corner registration marks"
+            value={t.showRegMarks}
+            onChange={v => setTweak('showRegMarks', v)}
+          />
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
+</script>
+<script>
+(async () => {
+  if (document.fonts && document.fonts.ready) {
+    try { await document.fonts.ready; } catch (e) {}
+  }
+  await new Promise(r => setTimeout(r, 600));
+  window.print();
+})();
+</script>
+</body>
+</html>
