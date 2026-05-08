@@ -19,10 +19,10 @@
     --paper-2: #ebe2d4;
     --rule: rgba(243, 236, 225, 0.18);
     --rule-strong: rgba(243, 236, 225, 0.42);
-    --accent: #d6ff52;       /* electric chartreuse */
-    --accent-2: #ff8a5b;     /* warm coral */
-    --muted: rgba(243, 236, 225, 0.62);
-    --muted-2: rgba(243, 236, 225, 0.78);
+    --accent: #ff8a5b;       /* warm coral orange */
+    --accent-2: #d6ff52;     /* electric chartreuse */
+    --muted: color-mix(in oklab, #f3ece1 62%, transparent);
+    --muted-2: color-mix(in oklab, #f3ece1 78%, transparent);
     --w: 820px;
     --h: 1160px;
   }
@@ -93,7 +93,7 @@
     content: "";
     position: absolute; inset: 0;
     background-image:
-      radial-gradient(circle at 20% 10%, rgba(214,255,82,0.05), transparent 35%),
+      radial-gradient(circle at 20% 10%, rgba(255,138,91,0.05), transparent 35%),
       radial-gradient(circle at 90% 70%, rgba(255,138,91,0.06), transparent 40%);
     pointer-events: none;
     z-index: 0;
@@ -178,7 +178,7 @@
     width: 8px; height: 8px;
     background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px rgba(214,255,82,0.15);
+    box-shadow: 0 0 0 4px rgba(255,138,91,0.15);
   }
   .eyebrow .sep { color: var(--muted); }
   .eyebrow .pill {
@@ -734,7 +734,7 @@
                      L620 40 L632 34 L644 46 L656 40
                      L720 40 L730 24 L740 52 L750 20 L758 48 L768 40
                      L820 40"
-                  fill="none" stroke="#d6ff52" stroke-opacity="0.85" stroke-width="1.4"
+                  fill="none" stroke="#ff8a5b" stroke-opacity="0.85" stroke-width="1.4"
                   stroke-linejoin="round" stroke-linecap="round"/>
             <path d="M0 44 Q60 44 80 42 T160 44 T240 42 T320 45 T400 43
                      T480 44 T560 42 T640 44 T720 43 T820 44"
@@ -750,7 +750,7 @@
                      L620 40 L632 34 L644 46 L656 40
                      L720 40 L730 24 L740 52 L750 20 L758 48 L768 40
                      L820 40"
-                  fill="none" stroke="#d6ff52" stroke-opacity="0.85" stroke-width="1.4"
+                  fill="none" stroke="#ff8a5b" stroke-opacity="0.85" stroke-width="1.4"
                   stroke-linejoin="round" stroke-linecap="round"/>
             <path transform="translate(820,0)"
                   d="M0 44 Q60 44 80 42 T160 44 T240 42 T320 45 T400 43
